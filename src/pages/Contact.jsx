@@ -15,8 +15,8 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 const contacts = [
   {
     label: "Email",
-    value: "matt@example.com",
-    href: "mailto:matt@example.com",
+    value: "matthew.monzingo@gmail.com",
+    href: "mailto:matthew.monzingo@gmail.com",
     icon: <EmailIcon />,
   },
   {
@@ -27,8 +27,8 @@ const contacts = [
   },
   {
     label: "LinkedIn",
-    value: "linkedin.com/in/matt-monzingo",
-    href: "https://linkedin.com/in/",
+    value: "linkedin.com/in/matthewmonzingo",
+    href: "https://www.linkedin.com/in/matthewmonzingo/",
     icon: <LinkedInIcon />,
   },
 ];

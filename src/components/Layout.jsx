@@ -61,18 +61,15 @@ export default function Layout() {
         }}
       >
         <Avatar
+          src="/profile.jpg"
+          alt="Matt Monzingo"
           sx={{
             width: 80,
             height: 80,
-            fontSize: 32,
-            fontWeight: 700,
-            bgcolor: "#fff",
-            color: "#0a66c2",
             mb: 1.5,
+            border: "3px solid #fff",
           }}
-        >
-          MM
-        </Avatar>
+        />
         <Typography variant="h6" fontWeight={600}>
           Matt Monzingo
         </Typography>

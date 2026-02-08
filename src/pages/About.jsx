@@ -8,14 +8,14 @@ export default function About() {
           About
         </Typography>
         <Typography variant="body1" color="text.secondary" paragraph>
-          Passionate software engineer with experience building modern web
-          applications and scalable systems. Committed to writing clean,
-          maintainable code and continuously learning new technologies.
+          AI/ML Engineer specializing in autonomous agent systems at enterprise
+          scale. Delivered AI-first marketing platform from scratch using Python
+          and LangChain, enabling 10,000+ autonomous experiments across 90+
+          locations and 20+ marketplaces globally.
         </Typography>
         <Typography variant="body1" color="text.secondary">
-          Focused on delivering high-quality solutions that make a real impact.
-          Enjoys collaborating with cross-functional teams and tackling complex
-          technical challenges.
+          Experienced in agentic decision-making, distributed systems, and
+          cost-optimized AI architectures.
         </Typography>
       </CardContent>
     </Card>

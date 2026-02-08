@@ -9,21 +9,33 @@ import WorkIcon from "@mui/icons-material/Work";
 
 const jobs = [
   {
-    title: "Software Engineer",
-    company: "Company Name",
-    dates: "Jan 2023 – Present",
-    bullets: [
-      "Developed and maintained web applications using modern frameworks.",
-      "Collaborated with cross-functional teams to deliver high-quality software.",
-    ],
-  },
-  {
-    title: "Junior Developer",
-    company: "Previous Company",
-    dates: "Jun 2021 – Dec 2022",
-    bullets: [
-      "Built RESTful APIs and contributed to front-end development.",
-      "Participated in code reviews and agile development practices.",
+    title: "Software Development Engineer (SDE-2 Level)",
+    company: "Amazon \u2014 Prime Member Growth Customer Experience Engineering",
+    location: "Seattle, WA",
+    dates: "August 2023 \u2013 Present",
+    sections: [
+      {
+        heading: "AI-First Marketing System (Q4 2025 \u2013 Present)",
+        bullets: [
+          "Architected and built autonomous AI agent system from scratch using Python and LangChain, with cost-optimized multi-tiered autonomous decision engine that analyzes past experiments and marketplace data to select optimal configurations \u2014 enabling 10,000+ annual experiments across 90+ Prime locations (10x experiment increase over past year)",
+          "Reduced marketer effort by 95%+ by automating entire experiment lifecycle \u2014 marketers now only approve/reject autonomous proposals instead of manual experiment creation and management",
+          "Drove production validation by collaborating with customers on live testing, deep-diving into subsystem performance metrics, and coordinating rapid bug fixes and feature enhancements",
+          "Created AI tooling eliminating 1-hour manual workflow required during production validation via automated data collection, Gen-AI insight generation, and experiment construction",
+        ],
+      },
+      {
+        heading: "AI-Assisted Marketing System (Q1\u2013Q4 2025)",
+        bullets: [
+          "Built conversational AI agent using Python and LangChain with custom tools for experiment generation, automatic string asset creation with translation support, and database querying via specialized sub-agent",
+        ],
+      },
+      {
+        heading: "Additional Impact",
+        bullets: [
+          "Led enterprise-scale migration automation across 22 marketplaces generating thousands of content assets through comprehensive framework integrating multiple rate-limited enterprise APIs \u2014 saved months of manual effort",
+          "Spearheaded Gen-AI upskilling initiative resulting in 11 SDEs completing Gen-AI courses, establishing team expertise in agentic systems and modern AI/ML frameworks",
+        ],
+      },
     ],
   },
 ];
@@ -54,27 +66,39 @@ export default function Experience() {
               >
                 <WorkIcon color="primary" />
               </Box>
-              <Box>
+              <Box sx={{ flex: 1 }}>
                 <Typography variant="subtitle1" fontWeight={600}>
                   {job.title}
                 </Typography>
                 <Typography variant="body2">{job.company}</Typography>
                 <Typography variant="body2" color="text.secondary">
-                  {job.dates}
+                  {job.location} &middot; {job.dates}
                 </Typography>
-                <Box component="ul" sx={{ mt: 1, pl: 2 }}>
-                  {job.bullets.map((b, j) => (
+
+                {job.sections.map((section, s) => (
+                  <Box key={s} sx={{ mt: 2 }}>
                     <Typography
-                      key={j}
-                      component="li"
                       variant="body2"
-                      color="text.secondary"
+                      fontWeight={600}
                       sx={{ mb: 0.5 }}
                     >
-                      {b}
+                      {section.heading}
                     </Typography>
-                  ))}
-                </Box>
+                    <Box component="ul" sx={{ pl: 2, m: 0 }}>
+                      {section.bullets.map((b, j) => (
+                        <Typography
+                          key={j}
+                          component="li"
+                          variant="body2"
+                          color="text.secondary"
+                          sx={{ mb: 0.5 }}
+                        >
+                          {b}
+                        </Typography>
+                      ))}
+                    </Box>
+                  </Box>
+                ))}
               </Box>
             </Box>
           </Box>

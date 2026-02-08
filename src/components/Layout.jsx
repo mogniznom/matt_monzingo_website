@@ -21,6 +21,7 @@ import WorkIcon from "@mui/icons-material/Work";
 import SchoolIcon from "@mui/icons-material/School";
 import BarChartIcon from "@mui/icons-material/BarChart";
 import EmailIcon from "@mui/icons-material/Email";
+import BuildIcon from "@mui/icons-material/Build";
 
 const DRAWER_WIDTH = 260;
 
@@ -29,6 +30,7 @@ const navItems = [
   { label: "Experience", path: "/experience", icon: <WorkIcon /> },
   { label: "Education", path: "/education", icon: <SchoolIcon /> },
   { label: "Skills", path: "/skills", icon: <BarChartIcon /> },
+  { label: "Projects", path: "/projects", icon: <BuildIcon /> },
   { label: "Contact", path: "/contact", icon: <EmailIcon /> },
 ];
 
@@ -75,7 +77,7 @@ export default function Layout() {
           Matt Monzingo
         </Typography>
         <Typography variant="body2" sx={{ opacity: 0.85 }}>
-          Software Engineer
+          AI/ML Engineer
         </Typography>
       </Box>
 

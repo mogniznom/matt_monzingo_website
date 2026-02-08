@@ -3,9 +3,10 @@ import SchoolIcon from "@mui/icons-material/School";
 
 const education = [
   {
-    degree: "Bachelor of Science in Computer Science",
-    school: "University Name",
-    dates: "2017 – 2021",
+    degree: "Bachelor of Science in Computer Science and Data Science",
+    detail: "Concentration: Machine Intelligence",
+    school: "Purdue University",
+    dates: "2022",
   },
 ];
 
@@ -36,6 +37,9 @@ export default function Education() {
             <Box>
               <Typography variant="subtitle1" fontWeight={600}>
                 {edu.degree}
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                {edu.detail}
               </Typography>
               <Typography variant="body2">{edu.school}</Typography>
               <Typography variant="body2" color="text.secondary">

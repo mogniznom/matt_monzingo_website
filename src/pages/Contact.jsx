@@ -2,6 +2,7 @@ import {
   Card,
   CardContent,
   Typography,
+  Box,
   List,
   ListItem,
   ListItemIcon,
@@ -35,17 +36,45 @@ const contacts = [
 
 export default function Contact() {
   return (
-    <Card elevation={1}>
+    <Card elevation={0}>
       <CardContent sx={{ p: 4 }}>
-        <Typography variant="h5" fontWeight={600} gutterBottom>
-          Contact
-        </Typography>
+        <Box sx={{ display: "flex", alignItems: "center", gap: 1.5, mb: 2 }}>
+          <Box
+            sx={{
+              width: 4,
+              height: 28,
+              borderRadius: 1,
+              background: "linear-gradient(180deg, #00e5ff, #7c4dff)",
+            }}
+          />
+          <Typography variant="h5">Contact</Typography>
+        </Box>
         <List disablePadding>
           {contacts.map((c) => (
-            <ListItem key={c.label} disableGutters>
-              <ListItemIcon sx={{ minWidth: 40 }}>{c.icon}</ListItemIcon>
+            <ListItem
+              key={c.label}
+              disableGutters
+              sx={{
+                py: 1.5,
+                "&:not(:last-child)": {
+                  borderBottom: "1px solid rgba(0, 229, 255, 0.06)",
+                },
+              }}
+            >
+              <ListItemIcon sx={{ minWidth: 40, color: "#00e5ff" }}>
+                {c.icon}
+              </ListItemIcon>
               <ListItemText
                 primary={c.label}
+                primaryTypographyProps={{
+                  sx: {
+                    fontFamily: "'Fira Code', monospace",
+                    fontSize: "0.75rem",
+                    color: "#64748b",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.05em",
+                  },
+                }}
                 secondary={
                   <Link
                     href={c.href}

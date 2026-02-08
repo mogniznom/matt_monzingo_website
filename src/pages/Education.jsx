@@ -12,11 +12,19 @@ const education = [
 
 export default function Education() {
   return (
-    <Card elevation={1}>
+    <Card elevation={0}>
       <CardContent sx={{ p: 4 }}>
-        <Typography variant="h5" fontWeight={600} gutterBottom>
-          Education
-        </Typography>
+        <Box sx={{ display: "flex", alignItems: "center", gap: 1.5, mb: 3 }}>
+          <Box
+            sx={{
+              width: 4,
+              height: 28,
+              borderRadius: 1,
+              background: "linear-gradient(180deg, #00e5ff, #7c4dff)",
+            }}
+          />
+          <Typography variant="h5">Education</Typography>
+        </Box>
 
         {education.map((edu, i) => (
           <Box key={i} sx={{ display: "flex", gap: 2 }}>
@@ -25,23 +33,31 @@ export default function Education() {
                 width: 48,
                 height: 48,
                 borderRadius: 2,
-                bgcolor: "grey.100",
+                bgcolor: "rgba(124, 77, 255, 0.08)",
+                border: "1px solid rgba(124, 77, 255, 0.15)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
                 flexShrink: 0,
               }}
             >
-              <SchoolIcon color="primary" />
+              <SchoolIcon sx={{ color: "#7c4dff" }} />
             </Box>
             <Box>
-              <Typography variant="subtitle1" fontWeight={600}>
-                {edu.degree}
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
+              <Typography variant="subtitle1">{edu.degree}</Typography>
+              <Typography
+                variant="body2"
+                sx={{
+                  color: "#7c4dff",
+                  fontFamily: "'Fira Code', monospace",
+                  fontSize: "0.75rem",
+                }}
+              >
                 {edu.detail}
               </Typography>
-              <Typography variant="body2">{edu.school}</Typography>
+              <Typography variant="body2" color="text.primary">
+                {edu.school}
+              </Typography>
               <Typography variant="body2" color="text.secondary">
                 {edu.dates}
               </Typography>

@@ -23,11 +23,19 @@ const projects = [
 
 export default function Projects() {
   return (
-    <Card elevation={1}>
+    <Card elevation={0}>
       <CardContent sx={{ p: 4 }}>
-        <Typography variant="h5" fontWeight={600} gutterBottom>
-          Projects
-        </Typography>
+        <Box sx={{ display: "flex", alignItems: "center", gap: 1.5, mb: 3 }}>
+          <Box
+            sx={{
+              width: 4,
+              height: 28,
+              borderRadius: 1,
+              background: "linear-gradient(180deg, #00e5ff, #7c4dff)",
+            }}
+          />
+          <Typography variant="h5">Projects</Typography>
+        </Box>
 
         {projects.map((project, i) => (
           <Box key={i}>
@@ -38,24 +46,34 @@ export default function Projects() {
                   width: 48,
                   height: 48,
                   borderRadius: 2,
-                  bgcolor: "grey.100",
+                  bgcolor: "rgba(0, 229, 255, 0.08)",
+                  border: "1px solid rgba(0, 229, 255, 0.15)",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
                   flexShrink: 0,
                 }}
               >
-                <BuildIcon color="primary" />
+                <BuildIcon sx={{ color: "#00e5ff" }} />
               </Box>
               <Box>
-                <Typography variant="subtitle1" fontWeight={600}>
-                  {project.title}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="subtitle1">{project.title}</Typography>
+                <Typography
+                  variant="body2"
+                  sx={{
+                    color: "#00e5ff",
+                    fontFamily: "'Fira Code', monospace",
+                    fontSize: "0.75rem",
+                  }}
+                >
                   {project.year}
                 </Typography>
                 {project.description && (
-                  <Typography variant="body2" color="text.secondary" sx={{ mt: 0.5 }}>
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    sx={{ mt: 0.5 }}
+                  >
                     {project.description}
                   </Typography>
                 )}

@@ -38,18 +38,32 @@ const skillCategories = [
 
 export default function Skills() {
   return (
-    <Card elevation={1}>
+    <Card elevation={0}>
       <CardContent sx={{ p: 4 }}>
-        <Typography variant="h5" fontWeight={600} gutterBottom>
-          Skills
-        </Typography>
+        <Box sx={{ display: "flex", alignItems: "center", gap: 1.5, mb: 3 }}>
+          <Box
+            sx={{
+              width: 4,
+              height: 28,
+              borderRadius: 1,
+              background: "linear-gradient(180deg, #00e5ff, #7c4dff)",
+            }}
+          />
+          <Typography variant="h5">Skills</Typography>
+        </Box>
 
         {skillCategories.map((cat) => (
           <Box key={cat.label} sx={{ mb: 3, "&:last-child": { mb: 0 } }}>
             <Typography
               variant="subtitle2"
-              fontWeight={600}
-              sx={{ mb: 1 }}
+              sx={{
+                mb: 1.5,
+                color: "#94a3b8",
+                fontFamily: "'Fira Code', monospace",
+                fontSize: "0.75rem",
+                textTransform: "uppercase",
+                letterSpacing: "0.1em",
+              }}
             >
               {cat.label}
             </Typography>
@@ -58,7 +72,6 @@ export default function Skills() {
                 <Chip
                   key={skill}
                   label={skill}
-                  color="primary"
                   variant="outlined"
                   sx={{ fontWeight: 500 }}
                 />

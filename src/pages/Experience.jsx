@@ -42,11 +42,19 @@ const jobs = [
 
 export default function Experience() {
   return (
-    <Card elevation={1}>
+    <Card elevation={0}>
       <CardContent sx={{ p: 4 }}>
-        <Typography variant="h5" fontWeight={600} gutterBottom>
-          Experience
-        </Typography>
+        <Box sx={{ display: "flex", alignItems: "center", gap: 1.5, mb: 3 }}>
+          <Box
+            sx={{
+              width: 4,
+              height: 28,
+              borderRadius: 1,
+              background: "linear-gradient(180deg, #00e5ff, #7c4dff)",
+            }}
+          />
+          <Typography variant="h5">Experience</Typography>
+        </Box>
 
         {jobs.map((job, i) => (
           <Box key={i}>
@@ -57,21 +65,30 @@ export default function Experience() {
                   width: 48,
                   height: 48,
                   borderRadius: 2,
-                  bgcolor: "grey.100",
+                  bgcolor: "rgba(0, 229, 255, 0.08)",
+                  border: "1px solid rgba(0, 229, 255, 0.15)",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
                   flexShrink: 0,
                 }}
               >
-                <WorkIcon color="primary" />
+                <WorkIcon sx={{ color: "#00e5ff" }} />
               </Box>
               <Box sx={{ flex: 1 }}>
-                <Typography variant="subtitle1" fontWeight={600}>
-                  {job.title}
-                </Typography>
-                <Typography variant="body2">{job.company}</Typography>
+                <Typography variant="subtitle1">{job.title}</Typography>
                 <Typography variant="body2" color="text.secondary">
+                  {job.company}
+                </Typography>
+                <Typography
+                  variant="body2"
+                  sx={{
+                    color: "#00e5ff",
+                    fontFamily: "'Fira Code', monospace",
+                    fontSize: "0.75rem",
+                    mt: 0.5,
+                  }}
+                >
                   {job.location} &middot; {job.dates}
                 </Typography>
 
@@ -80,7 +97,7 @@ export default function Experience() {
                     <Typography
                       variant="body2"
                       fontWeight={600}
-                      sx={{ mb: 0.5 }}
+                      sx={{ mb: 0.5, color: "#e2e8f0" }}
                     >
                       {section.heading}
                     </Typography>

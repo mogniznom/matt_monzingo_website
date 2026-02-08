@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Outlet, useNavigate, useLocation } from "react-router-dom";
-import { AnimatePresence } from "framer-motion";
 import {
   AppBar,
   Avatar,
@@ -259,11 +258,9 @@ export default function Layout() {
           zIndex: 1,
         }}
       >
-        <AnimatePresence mode="wait">
-          <PageTransition key={location.pathname}>
-            <Outlet />
-          </PageTransition>
-        </AnimatePresence>
+        <PageTransition key={location.pathname}>
+          <Outlet />
+        </PageTransition>
       </Box>
     </Box>
   );

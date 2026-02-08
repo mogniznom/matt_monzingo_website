@@ -4,9 +4,9 @@ import SchoolIcon from "@mui/icons-material/School";
 const education = [
   {
     degree: "Bachelor of Science in Computer Science and Data Science",
-    detail: "Concentration: Machine Intelligence",
-    school: "Purdue University",
-    dates: "2022",
+    detail: "Concentration: Machine Intelligence | GPA: 3.5",
+    school: "Purdue University \u2014 West Lafayette, IN",
+    dates: "December 2022",
   },
 ];
 

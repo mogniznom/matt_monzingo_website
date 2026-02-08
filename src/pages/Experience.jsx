@@ -38,6 +38,55 @@ const jobs = [
       },
     ],
   },
+  {
+    title: "Software Development Engineer Intern",
+    company: "Amazon \u2014 Ripple Experiment Queue (REQ)",
+    location: "Seattle, WA",
+    dates: "May \u2013 August 2022",
+    sections: [
+      {
+        heading: null,
+        bullets: [
+          "Built a service (REQ) using AWS that automated the end-to-end workflow of the team\u2019s experiment pipeline",
+          "Integrated REQ with multiple internal services across teams",
+          "Developed a React-based UI for users to interact with the REQ backend",
+          "Wrote unit tests using Mockito and performed manual testing to validate functionality",
+        ],
+      },
+    ],
+  },
+  {
+    title: "Undergraduate Research Assistant",
+    company: "Purdue University",
+    location: "West Lafayette, IN",
+    dates: "January \u2013 May 2022",
+    sections: [
+      {
+        heading: null,
+        bullets: [
+          "Worked on improving training time for the SEAL link prediction method on graph datasets",
+          "Achieved a 12% runtime reduction by implementing a producer-consumer queue to optimize GPU data transfer",
+          "Researched dataset characteristics to improve the subgraph generation used during model training",
+        ],
+      },
+    ],
+  },
+  {
+    title: "Software Verification Engineer",
+    company: "Aptiv",
+    location: "West Lafayette, IN",
+    dates: "March \u2013 December 2021",
+    sections: [
+      {
+        heading: null,
+        bullets: [
+          "Developed test scripts for TCP and UDP message validation within a level 2 autonomous driving system",
+          "Wrote and optimized CAPL scripts to reduce execution time for Ethernet test sequences",
+          "Restructured legacy test scripts to improve maintainability and reduce execution time between releases",
+        ],
+      },
+    ],
+  },
 ];
 
 export default function Experience() {
@@ -94,13 +143,15 @@ export default function Experience() {
 
                 {job.sections.map((section, s) => (
                   <Box key={s} sx={{ mt: 2 }}>
-                    <Typography
-                      variant="body2"
-                      fontWeight={600}
-                      sx={{ mb: 0.5, color: "#e2e8f0" }}
-                    >
-                      {section.heading}
-                    </Typography>
+                    {section.heading && (
+                      <Typography
+                        variant="body2"
+                        fontWeight={600}
+                        sx={{ mb: 0.5, color: "#e2e8f0" }}
+                      >
+                        {section.heading}
+                      </Typography>
+                    )}
                     <Box component="ul" sx={{ pl: 2, m: 0 }}>
                       {section.bullets.map((b, j) => (
                         <Typography

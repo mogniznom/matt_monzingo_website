@@ -19,6 +19,18 @@ const projects = [
     description:
       "Developed experimental AI agent using Anthropic API to explore agent architectures and autonomous decision-making patterns.",
   },
+  {
+    title: "Fake Review Prediction (Kaggle Competition)",
+    year: "2021",
+    description:
+      "Built an RNN with LSTM neurons in PyTorch to classify fake product reviews. Used CountVectorizer for text preprocessing and tuned hyperparameters across multiple model configurations. Placed 16th out of 105 competitors with 96.5% validation accuracy.",
+  },
+  {
+    title: "Micro-Bartending Unit",
+    year: "2021",
+    description:
+      "Built an automated drink-mixing device with a team. Created an animated UI in Java and wrote Python scripts to interface with hardware and the Venmo API on a Raspberry Pi.",
+  },
 ];
 
 export default function Projects() {

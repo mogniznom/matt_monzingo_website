@@ -7,9 +7,9 @@ import {
   Box,
   Chip,
   CircularProgress,
-  Fab,
   Divider,
   Button,
+  IconButton,
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import { useAuth, isAdmin } from "../contexts/AuthContext";
@@ -65,16 +65,25 @@ export default function Thoughts() {
           </Box>
 
           {/* Auth control */}
-          <Box>
+          <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+            {admin && (
+              <IconButton
+                size="small"
+                onClick={() => navigate("/thoughts/new/edit")}
+                sx={{ color: "#00e5ff", "&:hover": { bgcolor: "rgba(0,229,255,0.08)" } }}
+              >
+                <AddIcon fontSize="small" />
+              </IconButton>
+            )}
             {currentUser ? (
-              <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+              <>
                 <Typography variant="caption" sx={{ color: "#64748b" }}>
                   {admin ? "admin" : currentUser.displayName}
                 </Typography>
                 <Button size="small" onClick={signOut} sx={{ color: "#64748b", fontSize: "0.7rem" }}>
                   Sign out
                 </Button>
-              </Box>
+              </>
             ) : (
               <Button size="small" onClick={signInWithGoogle} sx={{ color: "#64748b", fontSize: "0.7rem" }}>
                 Sign in
@@ -146,23 +155,7 @@ export default function Thoughts() {
         ))}
       </CardContent>
 
-      {/* Admin FAB */}
-      {admin && (
-        <Fab
-          size="medium"
-          onClick={() => navigate("/thoughts/new")}
-          sx={{
-            position: "fixed",
-            bottom: 32,
-            right: 32,
-            bgcolor: "#00e5ff",
-            color: "#0a0e17",
-            "&:hover": { bgcolor: "#00b8cc" },
-          }}
-        >
-          <AddIcon />
-        </Fab>
-      )}
+
     </Card>
   );
 }

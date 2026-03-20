@@ -1,0 +1,38 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper: is the requester the site admin?
+    function isAdmin() {
+      return request.auth != null && request.auth.uid == "QkZHcKa1prORoMECj4crgiAfto63";
+    }
+
+    // Thoughts collection
+    match /thoughts/{postId} {
+      // Anyone can read published posts
+      allow get: if resource.data.published == true;
+      allow list: if resource.data.published == true;
+
+      // Only admin can create, update, or delete
+      allow create: if isAdmin()
+        && request.resource.data.keys().hasAll(['title', 'content', 'published', 'createdAt', 'updatedAt'])
+        && request.resource.data.title is string
+        && request.resource.data.title.size() > 0
+        && request.resource.data.content is string
+        && request.resource.data.published is bool;
+
+      allow update: if isAdmin()
+        && request.resource.data.title is string
+        && request.resource.data.title.size() > 0
+        && request.resource.data.content is string
+        && request.resource.data.published is bool;
+
+      allow delete: if isAdmin();
+    }
+
+    // Deny everything else
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

@@ -9,31 +9,34 @@ import WorkIcon from "@mui/icons-material/Work";
 
 const jobs = [
   {
-    title: "Software Development Engineer (SDE-2 Level)",
+    title: "Software Development Engineer (SDE-2)",
     company: "Amazon \u2014 Prime Member Growth Customer Experience Engineering",
     location: "Seattle, WA",
     dates: "August 2023 \u2013 Present",
     sections: [
       {
-        heading: "AI-First Marketing System (Q4 2025 \u2013 Present)",
+        heading: "Newton AI \u2013 Multi-Agent Autonomous Marketing Platform (Q4 2025 \u2013 Present)",
         bullets: [
-          "Architected and built autonomous AI agent system from scratch using Python and LangChain, with cost-optimized multi-tiered autonomous decision engine that analyzes past experiments and marketplace data to select optimal configurations \u2014 enabling 10,000+ annual experiments across 90+ Prime locations (10x experiment increase over past year)",
-          "Reduced marketer effort by 95%+ by automating entire experiment lifecycle \u2014 marketers now only approve/reject autonomous proposals instead of manual experiment creation and management",
-          "Drove production validation by collaborating with customers on live testing, deep-diving into subsystem performance metrics, and coordinating rapid bug fixes and feature enhancements",
-          "Created AI tooling eliminating 1-hour manual workflow required during production validation via automated data collection, Gen-AI insight generation, and experiment construction",
+          "Architected and built a production multi-agent system from scratch on Strands Agents SDK and Amazon Bedrock AgentCore, running Claude Sonnet 4 across 6 specialized agents \u2014 enabling fully autonomous signal-to-experiment pipelines across 90+ WW Prime locations",
+          "Designed a typed agent framework (BaseAgent<TInput, TOutput>) with Zod-based input validation, structured output parsing, streaming SSE support, and pluggable tool integration",
+          "Built the signal \u2192 opportunity pipeline end-to-end: signal ingestion, opportunity data layer, targeting criteria enrichment, and parallel agent evaluations across marketplace \u2192 location \u2192 atom dimensions",
+          "Developed production RAG integration: knowledge base-driven localization, location-specific context loading, and knowledge graph action groups wired into the autonomous Creative Configuration Agent",
+          "Built 3-tier testing infrastructure: unit tests with mocked Bedrock responses, integration test harness running live AgentCore agents, and pipeline integration tests with automated approval gates",
+          "Reduced marketer effort by 95%+ by automating the full experiment lifecycle: signal detection \u2192 opportunity evaluation \u2192 content generation \u2192 launch \u2192 analysis \u2192 learning loop",
         ],
       },
       {
-        heading: "AI-Assisted Marketing System (Q1\u2013Q4 2025)",
+        heading: "AI-Assisted Marketing Agent (Q1\u2013Q4 2025)",
         bullets: [
-          "Built conversational AI agent using Python and LangChain with custom tools for experiment generation, automatic string asset creation with translation support, and database querying via specialized sub-agent",
+          "Built conversational AI agent (Python, LangChain, Amazon Bedrock) with custom tools for experiment generation, string asset creation with translation support, and database querying via a specialized sub-agent",
+          "Implemented Creative Configuration Agent (Bedrock Agents, later migrated to Strands/AgentCore) with custom action groups for creative planning, content finalization, and asset generation",
         ],
       },
       {
         heading: "Additional Impact",
         bullets: [
-          "Led enterprise-scale migration automation across 22 marketplaces generating thousands of content assets through comprehensive framework integrating multiple rate-limited enterprise APIs \u2014 saved months of manual effort",
-          "Spearheaded Gen-AI upskilling initiative resulting in 11 SDEs completing Gen-AI courses, establishing team expertise in agentic systems and modern AI/ML frameworks",
+          "Led enterprise-scale migration automation across 22 marketplaces, generating thousands of content assets through a framework integrating multiple rate-limited enterprise APIs \u2014 saved months of manual effort",
+          "Spearheaded Gen-AI upskilling initiative resulting in 11 SDEs completing Gen-AI certifications, establishing team expertise in agentic systems and modern AI/ML frameworks",
         ],
       },
     ],
@@ -66,7 +69,7 @@ const jobs = [
         bullets: [
           "Worked on improving training time for the SEAL link prediction method on graph datasets",
           "Achieved a 12% runtime reduction by implementing a producer-consumer queue to optimize GPU data transfer",
-          "Researched dataset characteristics to improve the subgraph generation used during model training",
+          "Researched dataset characteristics to improve subgraph generation used during model training",
         ],
       },
     ],

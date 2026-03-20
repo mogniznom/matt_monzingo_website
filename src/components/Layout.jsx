@@ -22,6 +22,7 @@ import SchoolIcon from "@mui/icons-material/School";
 import BarChartIcon from "@mui/icons-material/BarChart";
 import EmailIcon from "@mui/icons-material/Email";
 import BuildIcon from "@mui/icons-material/Build";
+import ArticleIcon from "@mui/icons-material/Article";
 import ParticleBackground from "./ParticleBackground";
 import PageTransition from "./PageTransition";
 
@@ -33,6 +34,7 @@ const navItems = [
   { label: "Education", path: "/education", icon: <SchoolIcon /> },
   { label: "Skills", path: "/skills", icon: <BarChartIcon /> },
   { label: "Projects", path: "/projects", icon: <BuildIcon /> },
+  { label: "Thoughts", path: "/thoughts", icon: <ArticleIcon /> },
   { label: "Contact", path: "/contact", icon: <EmailIcon /> },
 ];
 
@@ -105,7 +107,9 @@ export default function Layout() {
       {/* Navigation */}
       <List sx={{ pt: 2, px: 1, flex: 1 }}>
         {navItems.map((item) => {
-          const isActive = location.pathname === item.path;
+          const isActive = item.path === "/thoughts"
+            ? location.pathname.startsWith("/thoughts")
+            : location.pathname === item.path;
           return (
             <ListItemButton
               key={item.path}

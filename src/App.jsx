@@ -6,6 +6,9 @@ import Education from "./pages/Education";
 import Skills from "./pages/Skills";
 import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
+import Thoughts from "./pages/Thoughts";
+import ThoughtPost from "./pages/ThoughtPost";
+import ThoughtEditor from "./pages/ThoughtEditor";
 
 function App() {
   return (
@@ -18,6 +21,9 @@ function App() {
         <Route path="skills" element={<Skills />} />
         <Route path="projects" element={<Projects />} />
         <Route path="contact" element={<Contact />} />
+        <Route path="thoughts" element={<Thoughts />} />
+        <Route path="thoughts/:id" element={<ThoughtPost />} />
+        <Route path="thoughts/:id/edit" element={<ThoughtEditor />} />
       </Route>
     </Routes>
   );

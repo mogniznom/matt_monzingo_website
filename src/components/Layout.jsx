@@ -26,16 +26,16 @@ import ArticleIcon from "@mui/icons-material/Article";
 import ParticleBackground from "./ParticleBackground";
 import PageTransition from "./PageTransition";
 
-const DRAWER_WIDTH = 280;
+const DRAWER_WIDTH = 260;
 
 const navItems = [
-  { label: "About", path: "/about", icon: <PersonIcon /> },
-  { label: "Experience", path: "/experience", icon: <WorkIcon /> },
-  { label: "Education", path: "/education", icon: <SchoolIcon /> },
-  { label: "Skills", path: "/skills", icon: <BarChartIcon /> },
-  { label: "Projects", path: "/projects", icon: <BuildIcon /> },
-  { label: "Thoughts", path: "/thoughts", icon: <ArticleIcon /> },
-  { label: "Contact", path: "/contact", icon: <EmailIcon /> },
+  { label: "About", path: "/about", icon: <PersonIcon fontSize="small" /> },
+  { label: "Experience", path: "/experience", icon: <WorkIcon fontSize="small" /> },
+  { label: "Education", path: "/education", icon: <SchoolIcon fontSize="small" /> },
+  { label: "Skills", path: "/skills", icon: <BarChartIcon fontSize="small" /> },
+  { label: "Projects", path: "/projects", icon: <BuildIcon fontSize="small" /> },
+  { label: "Thoughts", path: "/thoughts", icon: <ArticleIcon fontSize="small" /> },
+  { label: "Contact", path: "/contact", icon: <EmailIcon fontSize="small" /> },
 ];
 
 export default function Layout() {
@@ -52,107 +52,119 @@ export default function Layout() {
 
   const drawerContent = (
     <Box sx={{ height: "100%", display: "flex", flexDirection: "column" }}>
-      {/* Profile summary */}
+      {/* Profile */}
       <Box
         sx={{
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          py: 4,
+          pt: 4,
+          pb: 3.5,
           px: 2,
           position: "relative",
           "&::after": {
             content: '""',
             position: "absolute",
             bottom: 0,
-            left: "10%",
-            width: "80%",
+            left: "12%",
+            width: "76%",
             height: "1px",
             background:
-              "linear-gradient(90deg, transparent, rgba(0, 229, 255, 0.3), transparent)",
+              "linear-gradient(90deg, transparent, rgba(255,255,255,0.07), transparent)",
           },
         }}
       >
-        <Avatar
-          src="/profile.jpg"
-          alt="Matt Monzingo"
+        {/* Gradient ring around avatar */}
+        <Box
           sx={{
-            width: 90,
-            height: 90,
+            width: 80,
+            height: 80,
+            borderRadius: "50%",
+            background: "linear-gradient(135deg, #7C5CFC, #8B7BF7, #6EC6D8)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
             mb: 2,
-            border: "2px solid rgba(0, 229, 255, 0.4)",
-            boxShadow: "0 0 20px rgba(0, 229, 255, 0.15)",
-            transition: "box-shadow 0.3s ease",
-            "&:hover": {
-              boxShadow: "0 0 30px rgba(0, 229, 255, 0.3)",
-            },
+            boxShadow: "0 0 28px rgba(124,92,252,0.3)",
+            flexShrink: 0,
           }}
-        />
-        <Typography variant="h6" fontWeight={700} sx={{ color: "#e2e8f0" }}>
+        >
+          <Avatar
+            src="/profile.jpg"
+            alt="Matt Monzingo"
+            sx={{ width: 74, height: 74 }}
+          />
+        </Box>
+
+        <Typography
+          sx={{
+            fontFamily: "'Space Grotesk', sans-serif",
+            fontWeight: 600,
+            fontSize: "0.95rem",
+            color: "#E8E8ED",
+            letterSpacing: "-0.01em",
+          }}
+        >
           Matt Monzingo
         </Typography>
         <Typography
-          variant="body2"
           sx={{
-            color: "#00e5ff",
             fontFamily: "'Fira Code', monospace",
-            fontSize: "0.75rem",
-            mt: 0.5,
+            fontSize: "0.7rem",
+            color: "#8B7BF7",
+            mt: 0.4,
           }}
         >
-          {"// AI/ML Engineer"}
+          AI/ML Engineer
         </Typography>
       </Box>
 
       {/* Navigation */}
-      <List sx={{ pt: 2, px: 1, flex: 1 }}>
+      <List sx={{ pt: 2, px: 1.5, flex: 1 }}>
         {navItems.map((item) => {
-          const isActive = item.path === "/thoughts"
-            ? location.pathname.startsWith("/thoughts")
-            : location.pathname === item.path;
+          const isActive =
+            item.path === "/thoughts"
+              ? location.pathname.startsWith("/thoughts")
+              : location.pathname === item.path;
           return (
             <ListItemButton
               key={item.path}
               selected={isActive}
               onClick={() => handleNav(item.path)}
               sx={{
-                borderRadius: 2,
-                mb: 0.5,
-                px: 2,
-                transition: "all 0.2s ease",
-                border: "1px solid transparent",
+                borderRadius: 1.5,
+                mb: 0.25,
+                py: 0.9,
+                px: 1.5,
+                transition: "all 0.15s ease",
                 "&.Mui-selected": {
-                  bgcolor: "rgba(0, 229, 255, 0.08)",
-                  borderColor: "rgba(0, 229, 255, 0.2)",
-                  color: "#00e5ff",
-                  "&:hover": {
-                    bgcolor: "rgba(0, 229, 255, 0.12)",
-                  },
-                  "& .MuiListItemIcon-root": { color: "#00e5ff" },
+                  bgcolor: "rgba(139,123,247,0.1)",
+                  "&:hover": { bgcolor: "rgba(139,123,247,0.14)" },
+                  "& .MuiListItemIcon-root": { color: "#8B7BF7" },
                 },
-                "&:hover": {
-                  bgcolor: "rgba(255, 255, 255, 0.04)",
-                },
+                "&:hover": { bgcolor: "rgba(255,255,255,0.04)" },
               }}
             >
-              <ListItemIcon sx={{ minWidth: 36, color: "#64748b" }}>
+              <ListItemIcon sx={{ minWidth: 32, color: "#5A5A6E" }}>
                 {item.icon}
               </ListItemIcon>
               <ListItemText
                 primary={item.label}
                 primaryTypographyProps={{
-                  fontSize: "0.9rem",
-                  fontWeight: isActive ? 600 : 400,
+                  fontSize: "0.875rem",
+                  fontWeight: isActive ? 500 : 400,
+                  color: isActive ? "#E8E8ED" : "#9898A6",
                 }}
               />
               {isActive && (
                 <Box
                   sx={{
-                    width: 6,
-                    height: 6,
+                    width: 5,
+                    height: 5,
                     borderRadius: "50%",
-                    bgcolor: "#00e5ff",
-                    boxShadow: "0 0 8px #00e5ff",
+                    bgcolor: "#8B7BF7",
+                    boxShadow: "0 0 7px #8B7BF7",
+                    flexShrink: 0,
                   }}
                 />
               )}
@@ -161,18 +173,36 @@ export default function Layout() {
         })}
       </List>
 
-      {/* Bottom terminal-style decoration */}
+      {/* Status footer */}
       <Box
         sx={{
-          px: 2,
+          px: 2.5,
           py: 2,
-          fontFamily: "'Fira Code', monospace",
-          fontSize: "0.7rem",
-          color: "#475569",
-          borderTop: "1px solid rgba(0, 229, 255, 0.06)",
+          borderTop: "1px solid rgba(255,255,255,0.04)",
+          display: "flex",
+          alignItems: "center",
+          gap: 1,
         }}
       >
-        <span style={{ color: "#00e5ff" }}>$</span> status --online
+        <Box
+          sx={{
+            width: 6,
+            height: 6,
+            borderRadius: "50%",
+            bgcolor: "#34D399",
+            boxShadow: "0 0 7px rgba(52,211,153,0.8)",
+            flexShrink: 0,
+          }}
+        />
+        <Typography
+          sx={{
+            fontFamily: "'Fira Code', monospace",
+            fontSize: "0.65rem",
+            color: "#5A5A6E",
+          }}
+        >
+          status: online
+        </Typography>
       </Box>
     </Box>
   );
@@ -187,9 +217,9 @@ export default function Layout() {
           position="fixed"
           elevation={0}
           sx={{
-            bgcolor: "rgba(10, 14, 23, 0.9)",
+            bgcolor: "rgba(10,10,15,0.92)",
             backdropFilter: "blur(20px)",
-            borderBottom: "1px solid rgba(0, 229, 255, 0.1)",
+            borderBottom: "1px solid rgba(139,123,247,0.08)",
           }}
         >
           <Toolbar>
@@ -197,15 +227,17 @@ export default function Layout() {
               color="inherit"
               edge="start"
               onClick={() => setMobileOpen(true)}
-              sx={{ mr: 2 }}
+              sx={{ mr: 2, color: "#9898A6" }}
             >
               <MenuIcon />
             </IconButton>
             <Typography
-              variant="h6"
-              noWrap
-              fontWeight={700}
-              sx={{ color: "#e2e8f0" }}
+              sx={{
+                fontFamily: "'Space Grotesk', sans-serif",
+                fontWeight: 600,
+                fontSize: "1rem",
+                color: "#E8E8ED",
+              }}
             >
               Matt Monzingo
             </Typography>
@@ -240,7 +272,8 @@ export default function Layout() {
               "& .MuiDrawer-paper": {
                 width: DRAWER_WIDTH,
                 boxSizing: "border-box",
-                borderRight: "1px solid rgba(0, 229, 255, 0.08)",
+                borderRight: "1px solid rgba(255,255,255,0.04)",
+                boxShadow: "2px 0 24px rgba(0,0,0,0.4)",
               },
             }}
             open
@@ -255,11 +288,11 @@ export default function Layout() {
         component="main"
         sx={{
           flexGrow: 1,
-          p: { xs: 2, sm: 4 },
+          p: { xs: 2.5, sm: 5 },
           mt: { xs: 8, md: 0 },
-          maxWidth: 900,
           position: "relative",
           zIndex: 1,
+          maxWidth: { md: 880 },
         }}
       >
         <PageTransition key={location.pathname}>

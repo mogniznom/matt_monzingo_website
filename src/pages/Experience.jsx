@@ -1,32 +1,26 @@
-import {
-  Card,
-  CardContent,
-  Typography,
-  Box,
-  Divider,
-} from "@mui/material";
+import { Card, CardContent, Typography, Box } from "@mui/material";
 import WorkIcon from "@mui/icons-material/Work";
 
 const jobs = [
   {
     title: "Software Development Engineer (SDE-2)",
-    company: "Amazon \u2014 Prime Member Growth Customer Experience Engineering",
+    company: "Amazon — Prime Member Growth Customer Experience Engineering",
     location: "Seattle, WA",
-    dates: "August 2023 \u2013 Present",
+    dates: "August 2023 – Present",
     sections: [
       {
-        heading: "Newton AI \u2013 Multi-Agent Autonomous Marketing Platform (Q4 2025 \u2013 Present)",
+        heading: "Newton AI – Multi-Agent Autonomous Marketing Platform (Q4 2025 – Present)",
         bullets: [
-          "Architected and built a production multi-agent system from scratch on Strands Agents SDK and Amazon Bedrock AgentCore, running Claude Sonnet 4 across 6 specialized agents \u2014 enabling fully autonomous signal-to-experiment pipelines across 90+ WW Prime locations",
+          "Architected and built a production multi-agent system from scratch on Strands Agents SDK and Amazon Bedrock AgentCore, running Claude Sonnet 4 across 6 specialized agents — enabling fully autonomous signal-to-experiment pipelines across 90+ WW Prime locations",
           "Designed a typed agent framework (BaseAgent<TInput, TOutput>) with Zod-based input validation, structured output parsing, streaming SSE support, and pluggable tool integration",
-          "Built the signal \u2192 opportunity pipeline end-to-end: signal ingestion, opportunity data layer, targeting criteria enrichment, and parallel agent evaluations across marketplace \u2192 location \u2192 atom dimensions",
+          "Built the signal → opportunity pipeline end-to-end: signal ingestion, opportunity data layer, targeting criteria enrichment, and parallel agent evaluations across marketplace → location → atom dimensions",
           "Developed production RAG integration: knowledge base-driven localization, location-specific context loading, and knowledge graph action groups wired into the autonomous Creative Configuration Agent",
           "Built 3-tier testing infrastructure: unit tests with mocked Bedrock responses, integration test harness running live AgentCore agents, and pipeline integration tests with automated approval gates",
-          "Reduced marketer effort by 95%+ by automating the full experiment lifecycle: signal detection \u2192 opportunity evaluation \u2192 content generation \u2192 launch \u2192 analysis \u2192 learning loop",
+          "Reduced marketer effort by 95%+ by automating the full experiment lifecycle: signal detection → opportunity evaluation → content generation → launch → analysis → learning loop",
         ],
       },
       {
-        heading: "AI-Assisted Marketing Agent (Q1\u2013Q4 2025)",
+        heading: "AI-Assisted Marketing Agent (Q1–Q4 2025)",
         bullets: [
           "Built conversational AI agent (Python, LangChain, Amazon Bedrock) with custom tools for experiment generation, string asset creation with translation support, and database querying via a specialized sub-agent",
           "Implemented Creative Configuration Agent (Bedrock Agents, later migrated to Strands/AgentCore) with custom action groups for creative planning, content finalization, and asset generation",
@@ -35,7 +29,7 @@ const jobs = [
       {
         heading: "Additional Impact",
         bullets: [
-          "Led enterprise-scale migration automation across 22 marketplaces, generating thousands of content assets through a framework integrating multiple rate-limited enterprise APIs \u2014 saved months of manual effort",
+          "Led enterprise-scale migration automation across 22 marketplaces, generating thousands of content assets through a framework integrating multiple rate-limited enterprise APIs — saved months of manual effort",
           "Spearheaded Gen-AI upskilling initiative resulting in 11 SDEs completing Gen-AI certifications, establishing team expertise in agentic systems and modern AI/ML frameworks",
         ],
       },
@@ -43,14 +37,14 @@ const jobs = [
   },
   {
     title: "Software Development Engineer Intern",
-    company: "Amazon \u2014 Ripple Experiment Queue (REQ)",
+    company: "Amazon — Ripple Experiment Queue (REQ)",
     location: "Seattle, WA",
-    dates: "May \u2013 August 2022",
+    dates: "May – August 2022",
     sections: [
       {
         heading: null,
         bullets: [
-          "Built a service (REQ) using AWS that automated the end-to-end workflow of the team\u2019s experiment pipeline",
+          "Built a service (REQ) using AWS that automated the end-to-end workflow of the team's experiment pipeline",
           "Integrated REQ with multiple internal services across teams",
           "Developed a React-based UI for users to interact with the REQ backend",
           "Wrote unit tests using Mockito and performed manual testing to validate functionality",
@@ -62,7 +56,7 @@ const jobs = [
     title: "Undergraduate Research Assistant",
     company: "Purdue University",
     location: "West Lafayette, IN",
-    dates: "January \u2013 May 2022",
+    dates: "January – May 2022",
     sections: [
       {
         heading: null,
@@ -78,7 +72,7 @@ const jobs = [
     title: "Software Verification Engineer",
     company: "Aptiv",
     location: "West Lafayette, IN",
-    dates: "March \u2013 December 2021",
+    dates: "March – December 2021",
     sections: [
       {
         heading: null,
@@ -94,75 +88,154 @@ const jobs = [
 
 export default function Experience() {
   return (
-    <Card elevation={0}>
-      <CardContent sx={{ p: 4 }}>
-        <Box sx={{ display: "flex", alignItems: "center", gap: 1.5, mb: 3 }}>
-          <Box
-            sx={{
-              width: 4,
-              height: 28,
-              borderRadius: 1,
-              background: "linear-gradient(180deg, #00e5ff, #7c4dff)",
-            }}
-          />
-          <Typography variant="h5">Experience</Typography>
-        </Box>
+    <Box>
+      {/* Section header */}
+      <Box sx={{ display: "flex", alignItems: "center", gap: 1.5, mb: 4 }}>
+        <Box
+          sx={{
+            width: 4,
+            height: 28,
+            borderRadius: 1,
+            background: "linear-gradient(180deg, #7C5CFC, #8B7BF7)",
+          }}
+        />
+        <Typography variant="h5">Experience</Typography>
+      </Box>
+
+      {/* Timeline */}
+      <Box sx={{ position: "relative" }}>
+        {/* Vertical gradient line */}
+        <Box
+          sx={{
+            position: "absolute",
+            left: 17,
+            top: 8,
+            bottom: 8,
+            width: 2,
+            borderRadius: 1,
+            background:
+              "linear-gradient(180deg, #7C5CFC 0%, rgba(139,123,247,0.3) 60%, transparent 100%)",
+          }}
+        />
 
         {jobs.map((job, i) => (
-          <Box key={i}>
-            {i > 0 && <Divider sx={{ my: 3 }} />}
-            <Box sx={{ display: "flex", gap: 2 }}>
+          <Box
+            key={i}
+            sx={{
+              display: "flex",
+              alignItems: "flex-start",
+              gap: 0,
+              mb: i < jobs.length - 1 ? 3 : 0,
+            }}
+          >
+            {/* Dot column */}
+            <Box
+              sx={{
+                width: 36,
+                flexShrink: 0,
+                display: "flex",
+                justifyContent: "center",
+                pt: "22px",
+                zIndex: 1,
+              }}
+            >
               <Box
                 sx={{
-                  width: 48,
-                  height: 48,
-                  borderRadius: 2,
-                  bgcolor: "rgba(0, 229, 255, 0.08)",
-                  border: "1px solid rgba(0, 229, 255, 0.15)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  flexShrink: 0,
+                  width: 11,
+                  height: 11,
+                  borderRadius: "50%",
+                  bgcolor: i === 0 ? "#7C5CFC" : "#1C1C28",
+                  border: `2px solid ${i === 0 ? "#8B7BF7" : "#3A3A50"}`,
+                  boxShadow:
+                    i === 0 ? "0 0 12px rgba(124,92,252,0.6)" : "none",
+                  transition: "box-shadow 0.2s",
                 }}
-              >
-                <WorkIcon sx={{ color: "#00e5ff" }} />
-              </Box>
-              <Box sx={{ flex: 1 }}>
-                <Typography variant="subtitle1">{job.title}</Typography>
-                <Typography variant="body2" color="text.secondary">
-                  {job.company}
-                </Typography>
-                <Typography
-                  variant="body2"
-                  sx={{
-                    color: "#00e5ff",
-                    fontFamily: "'Fira Code', monospace",
-                    fontSize: "0.75rem",
-                    mt: 0.5,
-                  }}
-                >
-                  {job.location} &middot; {job.dates}
-                </Typography>
+              />
+            </Box>
 
+            {/* Card */}
+            <Card
+              elevation={0}
+              sx={{
+                flex: 1,
+                transition: "border-color 0.2s ease",
+                "&:hover": { borderColor: "rgba(139,123,247,0.28)" },
+              }}
+            >
+              <CardContent sx={{ p: 3 }}>
+                {/* Job header */}
+                <Box sx={{ display: "flex", gap: 1.5, mb: 2 }}>
+                  <Box
+                    sx={{
+                      width: 38,
+                      height: 38,
+                      borderRadius: 1.5,
+                      bgcolor: "rgba(139,123,247,0.08)",
+                      border: "1px solid rgba(139,123,247,0.12)",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      flexShrink: 0,
+                    }}
+                  >
+                    <WorkIcon sx={{ color: "#8B7BF7", fontSize: 18 }} />
+                  </Box>
+                  <Box sx={{ flex: 1, minWidth: 0 }}>
+                    <Typography
+                      sx={{
+                        fontFamily: "'Space Grotesk', sans-serif",
+                        fontWeight: 600,
+                        fontSize: "0.95rem",
+                        color: "#E8E8ED",
+                        lineHeight: 1.3,
+                      }}
+                    >
+                      {job.title}
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      color="text.secondary"
+                      sx={{ mt: 0.2 }}
+                    >
+                      {job.company}
+                    </Typography>
+                    <Typography
+                      sx={{
+                        fontFamily: "'Fira Code', monospace",
+                        fontSize: "0.7rem",
+                        color: "#8B7BF7",
+                        mt: 0.3,
+                      }}
+                    >
+                      {job.location} · {job.dates}
+                    </Typography>
+                  </Box>
+                </Box>
+
+                {/* Sections */}
                 {job.sections.map((section, s) => (
-                  <Box key={s} sx={{ mt: 2 }}>
+                  <Box key={s} sx={{ mt: s > 0 ? 2 : 0 }}>
                     {section.heading && (
                       <Typography
-                        variant="body2"
-                        fontWeight={600}
-                        sx={{ mb: 0.5, color: "#e2e8f0" }}
+                        sx={{
+                          fontSize: "0.8rem",
+                          fontWeight: 600,
+                          color: "#E8E8ED",
+                          mb: 0.75,
+                          lineHeight: 1.4,
+                        }}
                       >
                         {section.heading}
                       </Typography>
                     )}
-                    <Box component="ul" sx={{ pl: 2, m: 0 }}>
+                    <Box component="ul" sx={{ pl: 2.5, m: 0 }}>
                       {section.bullets.map((b, j) => (
                         <Typography
                           key={j}
                           component="li"
                           variant="body2"
                           color="text.secondary"
-                          sx={{ mb: 0.5 }}
+                          sx={{ mb: 0.5, lineHeight: 1.65 }}
                         >
                           {b}
                         </Typography>
@@ -170,11 +243,11 @@ export default function Experience() {
                     </Box>
                   </Box>
                 ))}
-              </Box>
-            </Box>
+              </CardContent>
+            </Card>
           </Box>
         ))}
-      </CardContent>
-    </Card>
+      </Box>
+    </Box>
   );
 }

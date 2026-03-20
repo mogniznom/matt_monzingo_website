@@ -9,9 +9,9 @@ service cloud.firestore {
 
     // Thoughts collection
     match /thoughts/{postId} {
-      // Anyone can read published posts
-      allow get: if resource.data.published == true;
-      allow list: if resource.data.published == true;
+      // Anyone can read published posts; admin can read all
+      allow get: if resource.data.published == true || isAdmin();
+      allow list: if resource.data.published == true || isAdmin();
 
       // Only admin can create, update, or delete
       allow create: if isAdmin()

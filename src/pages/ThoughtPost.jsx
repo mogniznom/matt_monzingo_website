@@ -42,11 +42,14 @@ const mdComponents = {
         <code>{children}</code>
       </Box>
     ),
-  a: ({ href, children }) => (
-    <Box component="a" href={href} target="_blank" rel="noopener noreferrer" sx={{ color: "#00e5ff", textDecoration: "none", "&:hover": { textDecoration: "underline" } }}>
-      {children}
-    </Box>
-  ),
+  a: ({ href, children }) => {
+    const safeHref = href && (href.startsWith("http://") || href.startsWith("https://") || href.startsWith("/")) ? href : "#";
+    return (
+      <Box component="a" href={safeHref} target="_blank" rel="noopener noreferrer" sx={{ color: "#00e5ff", textDecoration: "none", "&:hover": { textDecoration: "underline" } }}>
+        {children}
+      </Box>
+    );
+  },
 };
 
 export default function ThoughtPost() {

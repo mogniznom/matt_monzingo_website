@@ -150,7 +150,7 @@ export default function Thoughts() {
       {admin && (
         <Fab
           size="medium"
-          onClick={() => navigate("/thoughts/new")}
+          onClick={() => navigate("/thoughts/new/edit")}
           sx={{
             position: "fixed",
             bottom: 32,

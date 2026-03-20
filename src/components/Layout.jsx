@@ -2,13 +2,13 @@ import { useState } from "react";
 import { Outlet, useNavigate, useLocation } from "react-router-dom";
 import {
   AppBar,
-  Avatar,
   Box,
+  Button,
+  Container,
   Drawer,
   IconButton,
   List,
   ListItemButton,
-  ListItemIcon,
   ListItemText,
   Toolbar,
   Typography,
@@ -16,255 +16,261 @@ import {
   useTheme,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import PersonIcon from "@mui/icons-material/Person";
-import WorkIcon from "@mui/icons-material/Work";
-import SchoolIcon from "@mui/icons-material/School";
-import BarChartIcon from "@mui/icons-material/BarChart";
-import EmailIcon from "@mui/icons-material/Email";
-import BuildIcon from "@mui/icons-material/Build";
-import ArticleIcon from "@mui/icons-material/Article";
-import ParticleBackground from "./ParticleBackground";
+import CloseIcon from "@mui/icons-material/Close";
 import PageTransition from "./PageTransition";
 
-const DRAWER_WIDTH = 280;
-
 const navItems = [
-  { label: "About", path: "/about", icon: <PersonIcon /> },
-  { label: "Experience", path: "/experience", icon: <WorkIcon /> },
-  { label: "Education", path: "/education", icon: <SchoolIcon /> },
-  { label: "Skills", path: "/skills", icon: <BarChartIcon /> },
-  { label: "Projects", path: "/projects", icon: <BuildIcon /> },
-  { label: "Thoughts", path: "/thoughts", icon: <ArticleIcon /> },
-  { label: "Contact", path: "/contact", icon: <EmailIcon /> },
+  { label: "About", path: "/about" },
+  { label: "Experience", path: "/experience" },
+  { label: "Education", path: "/education" },
+  { label: "Skills", path: "/skills" },
+  { label: "Projects", path: "/projects" },
+  { label: "Thoughts", path: "/thoughts" },
+  { label: "Contact", path: "/contact" },
 ];
 
 export default function Layout() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
   const handleNav = (path) => {
     navigate(path);
-    if (isMobile) setMobileOpen(false);
+    setDrawerOpen(false);
   };
 
-  const drawerContent = (
-    <Box sx={{ height: "100%", display: "flex", flexDirection: "column" }}>
-      {/* Profile summary */}
+  const isActive = (path) =>
+    path === "/thoughts"
+      ? location.pathname.startsWith("/thoughts")
+      : location.pathname === path;
+
+  const mobileDrawer = (
+    <Box
+      sx={{
+        width: "100vw",
+        height: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        bgcolor: "#FFFFFF",
+        p: 4,
+      }}
+    >
       <Box
         sx={{
           display: "flex",
-          flexDirection: "column",
+          justifyContent: "space-between",
           alignItems: "center",
-          py: 4,
-          px: 2,
-          position: "relative",
-          "&::after": {
-            content: '""',
-            position: "absolute",
-            bottom: 0,
-            left: "10%",
-            width: "80%",
-            height: "1px",
-            background:
-              "linear-gradient(90deg, transparent, rgba(0, 229, 255, 0.3), transparent)",
-          },
+          mb: 6,
         }}
       >
-        <Avatar
-          src="/profile.jpg"
-          alt="Matt Monzingo"
-          sx={{
-            width: 90,
-            height: 90,
-            mb: 2,
-            border: "2px solid rgba(0, 229, 255, 0.4)",
-            boxShadow: "0 0 20px rgba(0, 229, 255, 0.15)",
-            transition: "box-shadow 0.3s ease",
-            "&:hover": {
-              boxShadow: "0 0 30px rgba(0, 229, 255, 0.3)",
-            },
-          }}
-        />
-        <Typography variant="h6" fontWeight={700} sx={{ color: "#e2e8f0" }}>
-          Matt Monzingo
-        </Typography>
         <Typography
-          variant="body2"
-          sx={{
-            color: "#00e5ff",
-            fontFamily: "'Fira Code', monospace",
-            fontSize: "0.75rem",
-            mt: 0.5,
-          }}
+          variant="h6"
+          fontWeight={800}
+          sx={{ letterSpacing: "-0.02em", color: "#111111" }}
         >
-          {"// AI/ML Engineer"}
+          MM
         </Typography>
+        <IconButton onClick={() => setDrawerOpen(false)} sx={{ color: "#111111" }}>
+          <CloseIcon />
+        </IconButton>
       </Box>
 
-      {/* Navigation */}
-      <List sx={{ pt: 2, px: 1, flex: 1 }}>
-        {navItems.map((item) => {
-          const isActive = item.path === "/thoughts"
-            ? location.pathname.startsWith("/thoughts")
-            : location.pathname === item.path;
-          return (
-            <ListItemButton
-              key={item.path}
-              selected={isActive}
-              onClick={() => handleNav(item.path)}
-              sx={{
-                borderRadius: 2,
-                mb: 0.5,
-                px: 2,
-                transition: "all 0.2s ease",
-                border: "1px solid transparent",
-                "&.Mui-selected": {
-                  bgcolor: "rgba(0, 229, 255, 0.08)",
-                  borderColor: "rgba(0, 229, 255, 0.2)",
-                  color: "#00e5ff",
-                  "&:hover": {
-                    bgcolor: "rgba(0, 229, 255, 0.12)",
-                  },
-                  "& .MuiListItemIcon-root": { color: "#00e5ff" },
-                },
-                "&:hover": {
-                  bgcolor: "rgba(255, 255, 255, 0.04)",
-                },
+      <List sx={{ flex: 1 }}>
+        {navItems.map((item) => (
+          <ListItemButton
+            key={item.path}
+            onClick={() => handleNav(item.path)}
+            sx={{
+              borderRadius: 2,
+              mb: 1,
+              px: 2,
+              py: 1.5,
+              borderLeft: isActive(item.path)
+                ? "3px solid #5B5FC7"
+                : "3px solid transparent",
+              bgcolor: isActive(item.path)
+                ? "rgba(91, 95, 199, 0.06)"
+                : "transparent",
+            }}
+          >
+            <ListItemText
+              primary={item.label}
+              primaryTypographyProps={{
+                fontSize: "1.4rem",
+                fontWeight: isActive(item.path) ? 700 : 400,
+                letterSpacing: "-0.02em",
+                color: isActive(item.path) ? "#5B5FC7" : "#111111",
               }}
-            >
-              <ListItemIcon sx={{ minWidth: 36, color: "#64748b" }}>
-                {item.icon}
-              </ListItemIcon>
-              <ListItemText
-                primary={item.label}
-                primaryTypographyProps={{
-                  fontSize: "0.9rem",
-                  fontWeight: isActive ? 600 : 400,
-                }}
-              />
-              {isActive && (
-                <Box
-                  sx={{
-                    width: 6,
-                    height: 6,
-                    borderRadius: "50%",
-                    bgcolor: "#00e5ff",
-                    boxShadow: "0 0 8px #00e5ff",
-                  }}
-                />
-              )}
-            </ListItemButton>
-          );
-        })}
+            />
+          </ListItemButton>
+        ))}
       </List>
 
-      {/* Bottom terminal-style decoration */}
-      <Box
-        sx={{
-          px: 2,
-          py: 2,
-          fontFamily: "'Fira Code', monospace",
-          fontSize: "0.7rem",
-          color: "#475569",
-          borderTop: "1px solid rgba(0, 229, 255, 0.06)",
-        }}
-      >
-        <span style={{ color: "#00e5ff" }}>$</span> status --online
+      <Box sx={{ mt: "auto", pt: 4, borderTop: "1px solid #E5E7EB" }}>
+        <Typography variant="caption" color="text.secondary">
+          Matt Monzingo · AI/ML Engineer
+        </Typography>
       </Box>
     </Box>
   );
 
   return (
-    <Box sx={{ display: "flex", minHeight: "100vh", position: "relative" }}>
-      <ParticleBackground />
+    <Box sx={{ minHeight: "100vh" }}>
+      {/* Top navigation bar */}
+      <AppBar position="sticky" elevation={0}>
+        <Container maxWidth="lg">
+          <Toolbar
+            disableGutters
+            sx={{
+              minHeight: { xs: 60, md: 68 },
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
+            {/* Logo */}
+            <Button
+              onClick={() => handleNav("/about")}
+              sx={{
+                p: 0,
+                minWidth: "auto",
+                color: "#111111",
+                "&:hover": { bgcolor: "transparent" },
+              }}
+            >
+              <Box
+                sx={{
+                  width: 36,
+                  height: 36,
+                  borderRadius: "10px",
+                  bgcolor: "#111111",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <Typography
+                  sx={{
+                    color: "#FAFAF8",
+                    fontSize: "0.8rem",
+                    fontWeight: 800,
+                    letterSpacing: "-0.02em",
+                  }}
+                >
+                  MM
+                </Typography>
+              </Box>
+            </Button>
 
-      {/* Mobile app bar */}
-      {isMobile && (
-        <AppBar
-          position="fixed"
-          elevation={0}
-          sx={{
-            bgcolor: "rgba(10, 14, 23, 0.9)",
-            backdropFilter: "blur(20px)",
-            borderBottom: "1px solid rgba(0, 229, 255, 0.1)",
-          }}
-        >
-          <Toolbar>
-            <IconButton
-              color="inherit"
-              edge="start"
-              onClick={() => setMobileOpen(true)}
-              sx={{ mr: 2 }}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Typography
-              variant="h6"
-              noWrap
-              fontWeight={700}
-              sx={{ color: "#e2e8f0" }}
-            >
-              Matt Monzingo
-            </Typography>
+            {/* Desktop nav */}
+            {!isMobile && (
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 0.5,
+                  bgcolor: "#F3F4F6",
+                  borderRadius: 100,
+                  px: 1,
+                  py: 0.75,
+                }}
+              >
+                {navItems.map((item) => (
+                  <Button
+                    key={item.path}
+                    onClick={() => handleNav(item.path)}
+                    sx={{
+                      borderRadius: 100,
+                      px: 2,
+                      py: 0.75,
+                      fontSize: "0.8rem",
+                      fontWeight: isActive(item.path) ? 600 : 400,
+                      color: isActive(item.path) ? "#FFFFFF" : "#6B7280",
+                      bgcolor: isActive(item.path) ? "#5B5FC7" : "transparent",
+                      "&:hover": {
+                        bgcolor: isActive(item.path)
+                          ? "#4A4EB6"
+                          : "rgba(0,0,0,0.05)",
+                        color: isActive(item.path) ? "#FFFFFF" : "#111111",
+                      },
+                      transition: "all 0.15s ease",
+                      minWidth: "auto",
+                    }}
+                  >
+                    {item.label}
+                  </Button>
+                ))}
+              </Box>
+            )}
+
+            {/* Mobile menu button */}
+            {isMobile && (
+              <IconButton
+                onClick={() => setDrawerOpen(true)}
+                sx={{ color: "#111111" }}
+              >
+                <MenuIcon />
+              </IconButton>
+            )}
           </Toolbar>
-        </AppBar>
-      )}
+        </Container>
+      </AppBar>
 
-      {/* Sidebar */}
-      <Box
-        component="nav"
-        sx={{ width: { md: DRAWER_WIDTH }, flexShrink: { md: 0 } }}
+      {/* Mobile drawer */}
+      <Drawer
+        anchor="right"
+        open={drawerOpen}
+        onClose={() => setDrawerOpen(false)}
+        PaperProps={{
+          sx: { width: "100vw", maxWidth: "100vw" },
+        }}
       >
-        {isMobile ? (
-          <Drawer
-            variant="temporary"
-            open={mobileOpen}
-            onClose={() => setMobileOpen(false)}
-            ModalProps={{ keepMounted: true }}
-            sx={{
-              "& .MuiDrawer-paper": {
-                width: DRAWER_WIDTH,
-                boxSizing: "border-box",
-              },
-            }}
-          >
-            {drawerContent}
-          </Drawer>
-        ) : (
-          <Drawer
-            variant="permanent"
-            sx={{
-              "& .MuiDrawer-paper": {
-                width: DRAWER_WIDTH,
-                boxSizing: "border-box",
-                borderRight: "1px solid rgba(0, 229, 255, 0.08)",
-              },
-            }}
-            open
-          >
-            {drawerContent}
-          </Drawer>
-        )}
-      </Box>
+        {mobileDrawer}
+      </Drawer>
 
       {/* Main content */}
-      <Box
-        component="main"
+      <Container
+        maxWidth="lg"
         sx={{
-          flexGrow: 1,
-          p: { xs: 2, sm: 4 },
-          mt: { xs: 8, md: 0 },
-          maxWidth: 900,
-          position: "relative",
-          zIndex: 1,
+          py: { xs: 4, md: 6 },
+          px: { xs: 2, sm: 3, md: 4 },
         }}
       >
         <PageTransition key={location.pathname}>
           <Outlet />
         </PageTransition>
+      </Container>
+
+      {/* Footer */}
+      <Box
+        component="footer"
+        sx={{
+          borderTop: "1px solid #E5E7EB",
+          py: 4,
+          mt: 8,
+          bgcolor: "#FFFFFF",
+        }}
+      >
+        <Container maxWidth="lg">
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              flexWrap: "wrap",
+              gap: 2,
+            }}
+          >
+            <Typography variant="body2" color="text.secondary">
+              Matt Monzingo
+            </Typography>
+            <Typography variant="body2" color="text.secondary" sx={{ fontSize: "0.75rem" }}>
+              AI/ML Engineer · Seattle, WA
+            </Typography>
+          </Box>
+        </Container>
       </Box>
     </Box>
   );

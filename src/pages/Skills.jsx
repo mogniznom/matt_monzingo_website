@@ -1,8 +1,15 @@
-import { Card, CardContent, Typography, Chip, Box } from "@mui/material";
+import { Typography, Chip, Box } from "@mui/material";
+import PsychologyIcon from "@mui/icons-material/Psychology";
+import CodeIcon from "@mui/icons-material/Code";
+import CloudIcon from "@mui/icons-material/Cloud";
+import BugReportIcon from "@mui/icons-material/BugReport";
 
 const skillCategories = [
   {
     label: "Agentic AI",
+    color: "#8A4AF3",
+    bg: "#EDE7FF",
+    Icon: PsychologyIcon,
     skills: [
       "Strands Agents SDK",
       "Bedrock AgentCore",
@@ -18,6 +25,9 @@ const skillCategories = [
   },
   {
     label: "Languages & Frameworks",
+    color: "#FF6B6B",
+    bg: "#FFF0F0",
+    Icon: CodeIcon,
     skills: [
       "Python",
       "TypeScript",
@@ -29,6 +39,9 @@ const skillCategories = [
   },
   {
     label: "Infrastructure & Cloud",
+    color: "#4169E1",
+    bg: "#EEF2FF",
+    Icon: CloudIcon,
     skills: [
       "AWS Bedrock",
       "Lambda",
@@ -45,6 +58,9 @@ const skillCategories = [
   },
   {
     label: "Testing & Quality",
+    color: "#22C55E",
+    bg: "#F0FDF4",
+    Icon: BugReportIcon,
     skills: [
       "Integration Test Harnesses",
       "Mocked LLM Testing",
@@ -56,48 +72,120 @@ const skillCategories = [
 
 export default function Skills() {
   return (
-    <Card elevation={0}>
-      <CardContent sx={{ p: 4 }}>
-        <Box sx={{ display: "flex", alignItems: "center", gap: 1.5, mb: 3 }}>
-          <Box
-            sx={{
-              width: 4,
-              height: 28,
-              borderRadius: 1,
-              background: "linear-gradient(180deg, #00e5ff, #7c4dff)",
-            }}
-          />
-          <Typography variant="h5">Skills</Typography>
-        </Box>
+    <Box sx={{ maxWidth: 860 }}>
+      {/* Page header */}
+      <Box sx={{ mb: 3 }}>
+        <Typography
+          variant="overline"
+          sx={{ color: "#22C55E", fontWeight: 700, letterSpacing: "0.12em" }}
+        >
+          Expertise
+        </Typography>
+        <Typography
+          variant="h4"
+          sx={{
+            fontFamily: "'Space Grotesk', sans-serif",
+            fontWeight: 700,
+            color: "#1A1A2E",
+            lineHeight: 1.2,
+          }}
+        >
+          Skills
+        </Typography>
+      </Box>
 
+      {/* Skills bento grid */}
+      <Box
+        sx={{
+          display: "grid",
+          gridTemplateColumns: { xs: "1fr", sm: "1fr 1fr" },
+          gap: 2,
+        }}
+      >
         {skillCategories.map((cat) => (
-          <Box key={cat.label} sx={{ mb: 3, "&:last-child": { mb: 0 } }}>
-            <Typography
-              variant="subtitle2"
+          <Box
+            key={cat.label}
+            sx={{
+              borderRadius: "20px",
+              backgroundColor: "#FFFFFF",
+              boxShadow: "0px 4px 24px rgba(138, 74, 243, 0.08)",
+              overflow: "hidden",
+              transition: "box-shadow 0.2s ease, transform 0.2s ease",
+              "&:hover": {
+                boxShadow: `0px 8px 40px ${cat.color}1A`,
+                transform: "translateY(-2px)",
+              },
+            }}
+          >
+            {/* Category header */}
+            <Box
               sx={{
-                mb: 1.5,
-                color: "#94a3b8",
-                fontFamily: "'Fira Code', monospace",
-                fontSize: "0.75rem",
-                textTransform: "uppercase",
-                letterSpacing: "0.1em",
+                backgroundColor: cat.bg,
+                px: 3,
+                py: 2,
+                display: "flex",
+                alignItems: "center",
+                gap: 1.5,
               }}
             >
-              {cat.label}
-            </Typography>
-            <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
+              <Box
+                sx={{
+                  width: 36,
+                  height: 36,
+                  borderRadius: "10px",
+                  backgroundColor: cat.color,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  flexShrink: 0,
+                }}
+              >
+                <cat.Icon sx={{ color: "#FFFFFF", fontSize: 18 }} />
+              </Box>
+              <Typography
+                variant="subtitle1"
+                sx={{
+                  fontFamily: "'Space Grotesk', sans-serif",
+                  fontWeight: 700,
+                  color: cat.color,
+                }}
+              >
+                {cat.label}
+              </Typography>
+            </Box>
+
+            {/* Skills chips */}
+            <Box
+              sx={{
+                px: 2.5,
+                py: 2,
+                display: "flex",
+                flexWrap: "wrap",
+                gap: 0.75,
+              }}
+            >
               {cat.skills.map((skill) => (
                 <Chip
                   key={skill}
                   label={skill}
-                  variant="outlined"
-                  sx={{ fontWeight: 500 }}
+                  size="small"
+                  sx={{
+                    backgroundColor: `${cat.color}12`,
+                    color: cat.color,
+                    fontWeight: 600,
+                    fontSize: "0.75rem",
+                    borderRadius: "8px",
+                    border: `1px solid ${cat.color}28`,
+                    "&:hover": {
+                      backgroundColor: `${cat.color}22`,
+                    },
+                  }}
                 />
               ))}
             </Box>
           </Box>
         ))}
-      </CardContent>
-    </Card>
+      </Box>
+    </Box>
   );
 }

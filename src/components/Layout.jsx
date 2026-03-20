@@ -14,6 +14,7 @@ import {
   Typography,
   useMediaQuery,
   useTheme,
+  Chip,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import PersonIcon from "@mui/icons-material/Person";
@@ -23,19 +24,19 @@ import BarChartIcon from "@mui/icons-material/BarChart";
 import EmailIcon from "@mui/icons-material/Email";
 import BuildIcon from "@mui/icons-material/Build";
 import ArticleIcon from "@mui/icons-material/Article";
-import ParticleBackground from "./ParticleBackground";
 import PageTransition from "./PageTransition";
 
-const DRAWER_WIDTH = 280;
+const DRAWER_WIDTH = 288;
 
+// Color accent per nav item
 const navItems = [
-  { label: "About", path: "/about", icon: <PersonIcon /> },
-  { label: "Experience", path: "/experience", icon: <WorkIcon /> },
-  { label: "Education", path: "/education", icon: <SchoolIcon /> },
-  { label: "Skills", path: "/skills", icon: <BarChartIcon /> },
-  { label: "Projects", path: "/projects", icon: <BuildIcon /> },
-  { label: "Thoughts", path: "/thoughts", icon: <ArticleIcon /> },
-  { label: "Contact", path: "/contact", icon: <EmailIcon /> },
+  { label: "About", path: "/about", icon: <PersonIcon />, color: "#8A4AF3", bg: "#EDE7FF" },
+  { label: "Experience", path: "/experience", icon: <WorkIcon />, color: "#FF6B6B", bg: "#FFF0F0" },
+  { label: "Education", path: "/education", icon: <SchoolIcon />, color: "#00BCD4", bg: "#E0F7FA" },
+  { label: "Skills", path: "/skills", icon: <BarChartIcon />, color: "#22C55E", bg: "#F0FDF4" },
+  { label: "Projects", path: "/projects", icon: <BuildIcon />, color: "#4169E1", bg: "#EEF2FF" },
+  { label: "Thoughts", path: "/thoughts", icon: <ArticleIcon />, color: "#FFB800", bg: "#FFFBEB" },
+  { label: "Contact", path: "/contact", icon: <EmailIcon />, color: "#E91E63", bg: "#FCE4EC" },
 ];
 
 export default function Layout() {
@@ -51,25 +52,34 @@ export default function Layout() {
   };
 
   const drawerContent = (
-    <Box sx={{ height: "100%", display: "flex", flexDirection: "column" }}>
-      {/* Profile summary */}
+    <Box sx={{ height: "100%", display: "flex", flexDirection: "column", overflow: "hidden" }}>
+      {/* Hero profile area */}
       <Box
         sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          py: 4,
-          px: 2,
           position: "relative",
+          background: "linear-gradient(135deg, #8A4AF3 0%, #E81E63 100%)",
+          py: 4,
+          px: 3,
+          overflow: "hidden",
+          "&::before": {
+            content: '""',
+            position: "absolute",
+            top: -40,
+            right: -40,
+            width: 120,
+            height: 120,
+            borderRadius: "50%",
+            background: "rgba(255,255,255,0.1)",
+          },
           "&::after": {
             content: '""',
             position: "absolute",
-            bottom: 0,
-            left: "10%",
-            width: "80%",
-            height: "1px",
-            background:
-              "linear-gradient(90deg, transparent, rgba(0, 229, 255, 0.3), transparent)",
+            bottom: -20,
+            left: -20,
+            width: 80,
+            height: 80,
+            borderRadius: "50%",
+            background: "rgba(255,255,255,0.08)",
           },
         }}
       >
@@ -77,35 +87,60 @@ export default function Layout() {
           src="/profile.jpg"
           alt="Matt Monzingo"
           sx={{
-            width: 90,
-            height: 90,
-            mb: 2,
-            border: "2px solid rgba(0, 229, 255, 0.4)",
-            boxShadow: "0 0 20px rgba(0, 229, 255, 0.15)",
-            transition: "box-shadow 0.3s ease",
-            "&:hover": {
-              boxShadow: "0 0 30px rgba(0, 229, 255, 0.3)",
-            },
+            width: 72,
+            height: 72,
+            mb: 1.5,
+            border: "3px solid rgba(255,255,255,0.6)",
+            boxShadow: "0 8px 24px rgba(0,0,0,0.2)",
+            position: "relative",
+            zIndex: 1,
           }}
         />
-        <Typography variant="h6" fontWeight={700} sx={{ color: "#e2e8f0" }}>
-          Matt Monzingo
-        </Typography>
         <Typography
-          variant="body2"
+          variant="h6"
           sx={{
-            color: "#00e5ff",
-            fontFamily: "'Fira Code', monospace",
-            fontSize: "0.75rem",
-            mt: 0.5,
+            color: "#FFFFFF",
+            fontFamily: "'Space Grotesk', sans-serif",
+            fontWeight: 700,
+            lineHeight: 1.2,
+            position: "relative",
+            zIndex: 1,
           }}
         >
-          {"// AI/ML Engineer"}
+          Matt Monzingo
         </Typography>
+        <Chip
+          label="AI/ML Engineer"
+          size="small"
+          sx={{
+            mt: 1,
+            backgroundColor: "rgba(255,255,255,0.2)",
+            color: "#FFFFFF",
+            fontFamily: "'Space Grotesk', sans-serif",
+            fontWeight: 600,
+            fontSize: "0.7rem",
+            letterSpacing: "0.05em",
+            border: "1px solid rgba(255,255,255,0.3)",
+            position: "relative",
+            zIndex: 1,
+          }}
+        />
       </Box>
 
       {/* Navigation */}
-      <List sx={{ pt: 2, px: 1, flex: 1 }}>
+      <List sx={{ pt: 2, px: 1.5, flex: 1 }}>
+        <Typography
+          variant="overline"
+          sx={{
+            px: 1.5,
+            mb: 1,
+            display: "block",
+            color: "#9CA3AF",
+            fontSize: "0.65rem",
+          }}
+        >
+          Navigation
+        </Typography>
         {navItems.map((item) => {
           const isActive = item.path === "/thoughts"
             ? location.pathname.startsWith("/thoughts")
@@ -116,43 +151,53 @@ export default function Layout() {
               selected={isActive}
               onClick={() => handleNav(item.path)}
               sx={{
-                borderRadius: 2,
+                borderRadius: "12px",
                 mb: 0.5,
                 px: 2,
+                py: 1.2,
                 transition: "all 0.2s ease",
-                border: "1px solid transparent",
+                backgroundColor: isActive ? item.bg : "transparent",
                 "&.Mui-selected": {
-                  bgcolor: "rgba(0, 229, 255, 0.08)",
-                  borderColor: "rgba(0, 229, 255, 0.2)",
-                  color: "#00e5ff",
+                  backgroundColor: item.bg,
                   "&:hover": {
-                    bgcolor: "rgba(0, 229, 255, 0.12)",
+                    backgroundColor: item.bg,
+                    filter: "brightness(0.97)",
                   },
-                  "& .MuiListItemIcon-root": { color: "#00e5ff" },
+                  "& .MuiListItemIcon-root": { color: item.color },
+                  "& .MuiListItemText-primary": { color: item.color },
                 },
                 "&:hover": {
-                  bgcolor: "rgba(255, 255, 255, 0.04)",
+                  backgroundColor: isActive ? item.bg : "rgba(138, 74, 243, 0.05)",
                 },
               }}
             >
-              <ListItemIcon sx={{ minWidth: 36, color: "#64748b" }}>
+              <ListItemIcon
+                sx={{
+                  minWidth: 36,
+                  color: isActive ? item.color : "#9CA3AF",
+                  transition: "color 0.2s ease",
+                }}
+              >
                 {item.icon}
               </ListItemIcon>
               <ListItemText
                 primary={item.label}
                 primaryTypographyProps={{
+                  fontFamily: "'Space Grotesk', sans-serif",
                   fontSize: "0.9rem",
-                  fontWeight: isActive ? 600 : 400,
+                  fontWeight: isActive ? 700 : 500,
+                  color: isActive ? item.color : "#6B7280",
                 }}
               />
               {isActive && (
                 <Box
                   sx={{
-                    width: 6,
-                    height: 6,
+                    width: 8,
+                    height: 8,
                     borderRadius: "50%",
-                    bgcolor: "#00e5ff",
-                    boxShadow: "0 0 8px #00e5ff",
+                    bgcolor: item.color,
+                    boxShadow: `0 0 8px ${item.color}`,
+                    flexShrink: 0,
                   }}
                 />
               )}
@@ -161,54 +206,79 @@ export default function Layout() {
         })}
       </List>
 
-      {/* Bottom terminal-style decoration */}
+      {/* Footer */}
       <Box
         sx={{
-          px: 2,
+          px: 3,
           py: 2,
-          fontFamily: "'Fira Code', monospace",
-          fontSize: "0.7rem",
-          color: "#475569",
-          borderTop: "1px solid rgba(0, 229, 255, 0.06)",
+          borderTop: "1px solid rgba(138, 74, 243, 0.1)",
+          background: "rgba(248, 247, 252, 0.5)",
         }}
       >
-        <span style={{ color: "#00e5ff" }}>$</span> status --online
+        <Typography
+          variant="caption"
+          sx={{
+            color: "#9CA3AF",
+            fontFamily: "'Space Grotesk', sans-serif",
+            fontSize: "0.7rem",
+          }}
+        >
+          © 2025 Matt Monzingo
+        </Typography>
       </Box>
     </Box>
   );
 
   return (
     <Box sx={{ display: "flex", minHeight: "100vh", position: "relative" }}>
-      <ParticleBackground />
-
       {/* Mobile app bar */}
       {isMobile && (
         <AppBar
           position="fixed"
           elevation={0}
           sx={{
-            bgcolor: "rgba(10, 14, 23, 0.9)",
-            backdropFilter: "blur(20px)",
-            borderBottom: "1px solid rgba(0, 229, 255, 0.1)",
+            bgcolor: "#FFFFFF",
+            borderBottom: "1px solid rgba(138, 74, 243, 0.1)",
           }}
         >
           <Toolbar>
             <IconButton
-              color="inherit"
               edge="start"
               onClick={() => setMobileOpen(true)}
-              sx={{ mr: 2 }}
+              sx={{
+                mr: 2,
+                color: "#8A4AF3",
+                bgcolor: "#EDE7FF",
+                borderRadius: "10px",
+                "&:hover": { bgcolor: "#DDD5FF" },
+              }}
             >
               <MenuIcon />
             </IconButton>
-            <Typography
-              variant="h6"
-              noWrap
-              fontWeight={700}
-              sx={{ color: "#e2e8f0" }}
+            <Box
+              sx={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 0.5,
+                background: "linear-gradient(135deg, #8A4AF3, #E81E63)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }}
             >
-              Matt Monzingo
-            </Typography>
+              <Typography
+                variant="h6"
+                noWrap
+                sx={{
+                  fontFamily: "'Space Grotesk', sans-serif",
+                  fontWeight: 700,
+                  background: "linear-gradient(135deg, #8A4AF3, #E81E63)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                }}
+              >
+                Matt Monzingo
+              </Typography>
+            </Box>
           </Toolbar>
         </AppBar>
       )}
@@ -240,7 +310,7 @@ export default function Layout() {
               "& .MuiDrawer-paper": {
                 width: DRAWER_WIDTH,
                 boxSizing: "border-box",
-                borderRight: "1px solid rgba(0, 229, 255, 0.08)",
+                borderRight: "1px solid rgba(138, 74, 243, 0.08)",
               },
             }}
             open
@@ -255,9 +325,9 @@ export default function Layout() {
         component="main"
         sx={{
           flexGrow: 1,
-          p: { xs: 2, sm: 4 },
+          p: { xs: 2, sm: 3 },
           mt: { xs: 8, md: 0 },
-          maxWidth: 900,
+          minHeight: "100vh",
           position: "relative",
           zIndex: 1,
         }}

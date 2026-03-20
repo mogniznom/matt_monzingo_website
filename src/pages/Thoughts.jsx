@@ -58,7 +58,7 @@ export default function Thoughts() {
                 width: 4,
                 height: 28,
                 borderRadius: 1,
-                background: "linear-gradient(180deg, #00e5ff, #7c4dff)",
+                background: "linear-gradient(180deg, #7C5CFC, #8B7BF7)",
               }}
             />
             <Typography variant="h5">Thoughts</Typography>
@@ -70,22 +70,22 @@ export default function Thoughts() {
               <IconButton
                 size="small"
                 onClick={() => navigate("/thoughts/new/edit")}
-                sx={{ color: "#00e5ff", "&:hover": { bgcolor: "rgba(0,229,255,0.08)" } }}
+                sx={{ color: "#8B7BF7", "&:hover": { bgcolor: "rgba(139,123,247,0.08)" } }}
               >
                 <AddIcon fontSize="small" />
               </IconButton>
             )}
             {currentUser ? (
               <>
-                <Typography variant="caption" sx={{ color: "#64748b" }}>
+                <Typography variant="caption" sx={{ color: "#5A5A6E" }}>
                   {admin ? "admin" : currentUser.displayName}
                 </Typography>
-                <Button size="small" onClick={signOut} sx={{ color: "#64748b", fontSize: "0.7rem" }}>
+                <Button size="small" onClick={signOut} sx={{ color: "#5A5A6E", fontSize: "0.7rem" }}>
                   Sign out
                 </Button>
               </>
             ) : (
-              <Button size="small" onClick={signInWithGoogle} sx={{ color: "#64748b", fontSize: "0.7rem" }}>
+              <Button size="small" onClick={signInWithGoogle} sx={{ color: "#5A5A6E", fontSize: "0.7rem" }}>
                 Sign in
               </Button>
             )}
@@ -95,7 +95,7 @@ export default function Thoughts() {
         {/* Loading */}
         {loading && (
           <Box sx={{ display: "flex", justifyContent: "center", py: 6 }}>
-            <CircularProgress size={32} sx={{ color: "#00e5ff" }} />
+            <CircularProgress size={32} sx={{ color: "#8B7BF7" }} />
           </Box>
         )}
 
@@ -104,7 +104,7 @@ export default function Thoughts() {
           <Box sx={{ py: 6, textAlign: "center" }}>
             <Typography
               variant="body2"
-              sx={{ color: "#475569", fontFamily: "'Fira Code', monospace" }}
+              sx={{ color: "#5A5A6E", fontFamily: "'Fira Code', monospace" }}
             >
               // no posts yet
             </Typography>
@@ -123,20 +123,20 @@ export default function Thoughts() {
                 p: 1.5,
                 mx: -1.5,
                 transition: "background 0.15s",
-                "&:hover": { bgcolor: "rgba(0, 229, 255, 0.04)" },
+                "&:hover": { bgcolor: "rgba(139, 123, 247, 0.05)" },
               }}
             >
               <Box sx={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 2 }}>
-                <Typography variant="subtitle1" fontWeight={600} sx={{ color: "#e2e8f0" }}>
+                <Typography variant="subtitle1" fontWeight={600} sx={{ color: "#E8E8ED" }}>
                   {post.title}
                 </Typography>
                 {!post.published && (
-                  <Chip label="draft" size="small" sx={{ fontSize: "0.65rem", height: 18, bgcolor: "rgba(124, 77, 255, 0.15)", color: "#7c4dff", border: "1px solid rgba(124, 77, 255, 0.3)" }} />
+                  <Chip label="draft" size="small" sx={{ fontSize: "0.65rem", height: 18, bgcolor: "rgba(124, 92, 252, 0.15)", color: "#7C5CFC", border: "1px solid rgba(124, 92, 252, 0.3)" }} />
                 )}
               </Box>
               <Typography
                 variant="caption"
-                sx={{ color: "#00e5ff", fontFamily: "'Fira Code', monospace", fontSize: "0.7rem" }}
+                sx={{ color: "#8B7BF7", fontFamily: "'Fira Code', monospace", fontSize: "0.7rem" }}
               >
                 {formatDate(post.createdAt)}
               </Typography>

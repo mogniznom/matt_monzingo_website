@@ -69,7 +69,7 @@ export default function Layout() {
             width: "80%",
             height: "1px",
             background:
-              "linear-gradient(90deg, transparent, rgba(0, 229, 255, 0.3), transparent)",
+              "linear-gradient(90deg, transparent, rgba(139, 123, 247, 0.3), transparent)",
           },
         }}
       >
@@ -80,21 +80,25 @@ export default function Layout() {
             width: 90,
             height: 90,
             mb: 2,
-            border: "2px solid rgba(0, 229, 255, 0.4)",
-            boxShadow: "0 0 20px rgba(0, 229, 255, 0.15)",
+            border: "2px solid rgba(139, 123, 247, 0.4)",
+            boxShadow: "0 0 20px rgba(124, 92, 252, 0.15)",
             transition: "box-shadow 0.3s ease",
             "&:hover": {
-              boxShadow: "0 0 30px rgba(0, 229, 255, 0.3)",
+              boxShadow: "0 0 30px rgba(124, 92, 252, 0.3)",
             },
           }}
         />
-        <Typography variant="h6" fontWeight={700} sx={{ color: "#e2e8f0" }}>
+        <Typography
+          variant="h6"
+          fontWeight={700}
+          sx={{ color: "#E8E8ED", fontFamily: "'Space Grotesk', sans-serif" }}
+        >
           Matt Monzingo
         </Typography>
         <Typography
           variant="body2"
           sx={{
-            color: "#00e5ff",
+            color: "#8B7BF7",
             fontFamily: "'Fira Code', monospace",
             fontSize: "0.75rem",
             mt: 0.5,
@@ -122,20 +126,20 @@ export default function Layout() {
                 transition: "all 0.2s ease",
                 border: "1px solid transparent",
                 "&.Mui-selected": {
-                  bgcolor: "rgba(0, 229, 255, 0.08)",
-                  borderColor: "rgba(0, 229, 255, 0.2)",
-                  color: "#00e5ff",
+                  bgcolor: "rgba(139, 123, 247, 0.08)",
+                  borderColor: "rgba(139, 123, 247, 0.2)",
+                  color: "#8B7BF7",
                   "&:hover": {
-                    bgcolor: "rgba(0, 229, 255, 0.12)",
+                    bgcolor: "rgba(139, 123, 247, 0.12)",
                   },
-                  "& .MuiListItemIcon-root": { color: "#00e5ff" },
+                  "& .MuiListItemIcon-root": { color: "#8B7BF7" },
                 },
                 "&:hover": {
                   bgcolor: "rgba(255, 255, 255, 0.04)",
                 },
               }}
             >
-              <ListItemIcon sx={{ minWidth: 36, color: "#64748b" }}>
+              <ListItemIcon sx={{ minWidth: 36, color: "#5A5A6E" }}>
                 {item.icon}
               </ListItemIcon>
               <ListItemText
@@ -151,8 +155,8 @@ export default function Layout() {
                     width: 6,
                     height: 6,
                     borderRadius: "50%",
-                    bgcolor: "#00e5ff",
-                    boxShadow: "0 0 8px #00e5ff",
+                    bgcolor: "#8B7BF7",
+                    boxShadow: "0 0 8px #8B7BF7",
                   }}
                 />
               )}
@@ -168,11 +172,11 @@ export default function Layout() {
           py: 2,
           fontFamily: "'Fira Code', monospace",
           fontSize: "0.7rem",
-          color: "#475569",
-          borderTop: "1px solid rgba(0, 229, 255, 0.06)",
+          color: "#5A5A6E",
+          borderTop: "1px solid rgba(255, 255, 255, 0.05)",
         }}
       >
-        <span style={{ color: "#00e5ff" }}>$</span> status --online
+        <span style={{ color: "#8B7BF7" }}>$</span> status --online
       </Box>
     </Box>
   );
@@ -187,9 +191,9 @@ export default function Layout() {
           position="fixed"
           elevation={0}
           sx={{
-            bgcolor: "rgba(10, 14, 23, 0.9)",
+            bgcolor: "rgba(18, 18, 24, 0.92)",
             backdropFilter: "blur(20px)",
-            borderBottom: "1px solid rgba(0, 229, 255, 0.1)",
+            borderBottom: "1px solid rgba(139, 123, 247, 0.1)",
           }}
         >
           <Toolbar>
@@ -205,7 +209,7 @@ export default function Layout() {
               variant="h6"
               noWrap
               fontWeight={700}
-              sx={{ color: "#e2e8f0" }}
+              sx={{ color: "#E8E8ED", fontFamily: "'Space Grotesk', sans-serif" }}
             >
               Matt Monzingo
             </Typography>
@@ -240,7 +244,7 @@ export default function Layout() {
               "& .MuiDrawer-paper": {
                 width: DRAWER_WIDTH,
                 boxSizing: "border-box",
-                borderRight: "1px solid rgba(0, 229, 255, 0.08)",
+                borderRight: "1px solid rgba(255, 255, 255, 0.05)",
               },
             }}
             open

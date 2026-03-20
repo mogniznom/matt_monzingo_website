@@ -20,7 +20,7 @@ export default function Education() {
               width: 4,
               height: 28,
               borderRadius: 1,
-              background: "linear-gradient(180deg, #00e5ff, #7c4dff)",
+              background: "linear-gradient(180deg, #7C5CFC, #8B7BF7)",
             }}
           />
           <Typography variant="h5">Education</Typography>
@@ -33,22 +33,22 @@ export default function Education() {
                 width: 48,
                 height: 48,
                 borderRadius: 2,
-                bgcolor: "rgba(124, 77, 255, 0.08)",
-                border: "1px solid rgba(124, 77, 255, 0.15)",
+                bgcolor: "rgba(124, 92, 252, 0.08)",
+                border: "1px solid rgba(124, 92, 252, 0.15)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
                 flexShrink: 0,
               }}
             >
-              <SchoolIcon sx={{ color: "#7c4dff" }} />
+              <SchoolIcon sx={{ color: "#7C5CFC" }} />
             </Box>
             <Box>
               <Typography variant="subtitle1">{edu.degree}</Typography>
               <Typography
                 variant="body2"
                 sx={{
-                  color: "#7c4dff",
+                  color: "#7C5CFC",
                   fontFamily: "'Fira Code', monospace",
                   fontSize: "0.75rem",
                 }}

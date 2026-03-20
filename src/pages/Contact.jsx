@@ -44,7 +44,7 @@ export default function Contact() {
               width: 4,
               height: 28,
               borderRadius: 1,
-              background: "linear-gradient(180deg, #00e5ff, #7c4dff)",
+              background: "linear-gradient(180deg, #7C5CFC, #8B7BF7)",
             }}
           />
           <Typography variant="h5">Contact</Typography>
@@ -57,11 +57,11 @@ export default function Contact() {
               sx={{
                 py: 1.5,
                 "&:not(:last-child)": {
-                  borderBottom: "1px solid rgba(0, 229, 255, 0.06)",
+                  borderBottom: "1px solid rgba(255, 255, 255, 0.06)",
                 },
               }}
             >
-              <ListItemIcon sx={{ minWidth: 40, color: "#00e5ff" }}>
+              <ListItemIcon sx={{ minWidth: 40, color: "#8B7BF7" }}>
                 {c.icon}
               </ListItemIcon>
               <ListItemText
@@ -70,7 +70,7 @@ export default function Contact() {
                   sx: {
                     fontFamily: "'Fira Code', monospace",
                     fontSize: "0.75rem",
-                    color: "#64748b",
+                    color: "#5A5A6E",
                     textTransform: "uppercase",
                     letterSpacing: "0.05em",
                   },

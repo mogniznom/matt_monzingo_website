@@ -29,23 +29,23 @@ const mdComponents = {
       {children}
     </Typography>
   ),
-  h1: ({ children }) => <Typography variant="h5" sx={{ mt: 3, mb: 1, color: "#e2e8f0" }}>{children}</Typography>,
-  h2: ({ children }) => <Typography variant="h6" sx={{ mt: 2.5, mb: 1, color: "#e2e8f0" }}>{children}</Typography>,
-  h3: ({ children }) => <Typography variant="subtitle1" fontWeight={600} sx={{ mt: 2, mb: 0.5, color: "#e2e8f0" }}>{children}</Typography>,
+  h1: ({ children }) => <Typography variant="h5" sx={{ mt: 3, mb: 1, color: "#E8E8ED" }}>{children}</Typography>,
+  h2: ({ children }) => <Typography variant="h6" sx={{ mt: 2.5, mb: 1, color: "#E8E8ED" }}>{children}</Typography>,
+  h3: ({ children }) => <Typography variant="subtitle1" fontWeight={600} sx={{ mt: 2, mb: 0.5, color: "#E8E8ED" }}>{children}</Typography>,
   code: ({ inline, children }) =>
     inline ? (
-      <Box component="code" sx={{ fontFamily: "'Fira Code', monospace", fontSize: "0.85em", bgcolor: "rgba(0,229,255,0.08)", px: 0.5, borderRadius: 0.5, color: "#00e5ff" }}>
+      <Box component="code" sx={{ fontFamily: "'Fira Code', monospace", fontSize: "0.85em", bgcolor: "rgba(139,123,247,0.1)", px: 0.5, borderRadius: 0.5, color: "#8B7BF7" }}>
         {children}
       </Box>
     ) : (
-      <Box component="pre" sx={{ bgcolor: "rgba(0,0,0,0.3)", border: "1px solid rgba(0,229,255,0.1)", borderRadius: 1, p: 2, overflow: "auto", fontFamily: "'Fira Code', monospace", fontSize: "0.85rem", color: "#e2e8f0", my: 2 }}>
+      <Box component="pre" sx={{ bgcolor: "rgba(0,0,0,0.3)", border: "1px solid rgba(139,123,247,0.15)", borderRadius: 1, p: 2, overflow: "auto", fontFamily: "'Fira Code', monospace", fontSize: "0.85rem", color: "#E8E8ED", my: 2 }}>
         <code>{children}</code>
       </Box>
     ),
   a: ({ href, children }) => {
     const safeHref = href && (href.startsWith("http://") || href.startsWith("https://") || href.startsWith("/")) ? href : "#";
     return (
-      <Box component="a" href={safeHref} target="_blank" rel="noopener noreferrer" sx={{ color: "#00e5ff", textDecoration: "none", "&:hover": { textDecoration: "underline" } }}>
+      <Box component="a" href={safeHref} target="_blank" rel="noopener noreferrer" sx={{ color: "#8B7BF7", textDecoration: "none", "&:hover": { textDecoration: "underline" } }}>
         {children}
       </Box>
     );
@@ -81,18 +81,18 @@ export default function ThoughtPost() {
     <Card elevation={0}>
       <CardContent sx={{ p: 4 }}>
         <Box sx={{ display: "flex", alignItems: "center", gap: 1, mb: 3 }}>
-          <IconButton size="small" onClick={() => navigate("/thoughts")} sx={{ color: "#64748b" }}>
+          <IconButton size="small" onClick={() => navigate("/thoughts")} sx={{ color: "#5A5A6E" }}>
             <ArrowBackIcon fontSize="small" />
           </IconButton>
-          <Typography variant="body2" sx={{ color: "#64748b" }}>
+          <Typography variant="body2" sx={{ color: "#5A5A6E" }}>
             Thoughts
           </Typography>
           {admin && post && (
             <Box sx={{ ml: "auto", display: "flex", gap: 1 }}>
-              <IconButton size="small" onClick={() => navigate(`/thoughts/${id}/edit`)} sx={{ color: "#64748b" }}>
+              <IconButton size="small" onClick={() => navigate(`/thoughts/${id}/edit`)} sx={{ color: "#5A5A6E" }}>
                 <EditIcon fontSize="small" />
               </IconButton>
-              <IconButton size="small" onClick={handleDelete} sx={{ color: "#64748b" }}>
+              <IconButton size="small" onClick={handleDelete} sx={{ color: "#5A5A6E" }}>
                 <DeleteIcon fontSize="small" />
               </IconButton>
             </Box>
@@ -101,24 +101,24 @@ export default function ThoughtPost() {
 
         {loading && (
           <Box sx={{ display: "flex", justifyContent: "center", py: 6 }}>
-            <CircularProgress size={32} sx={{ color: "#00e5ff" }} />
+            <CircularProgress size={32} sx={{ color: "#8B7BF7" }} />
           </Box>
         )}
 
         {error && (
-          <Typography variant="body2" sx={{ color: "#64748b", fontFamily: "'Fira Code', monospace" }}>
+          <Typography variant="body2" sx={{ color: "#5A5A6E", fontFamily: "'Fira Code', monospace" }}>
             // {error}
           </Typography>
         )}
 
         {post && (
           <>
-            <Typography variant="h5" fontWeight={700} sx={{ color: "#e2e8f0", mb: 1 }}>
+            <Typography variant="h5" fontWeight={700} sx={{ color: "#E8E8ED", mb: 1 }}>
               {post.title}
             </Typography>
             <Typography
               variant="caption"
-              sx={{ color: "#00e5ff", fontFamily: "'Fira Code', monospace", fontSize: "0.7rem" }}
+              sx={{ color: "#8B7BF7", fontFamily: "'Fira Code', monospace", fontSize: "0.7rem" }}
             >
               {formatDate(post.createdAt)}
             </Typography>

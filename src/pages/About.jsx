@@ -10,7 +10,7 @@ export default function About() {
               width: 4,
               height: 28,
               borderRadius: 1,
-              background: "linear-gradient(180deg, #00e5ff, #7c4dff)",
+              background: "linear-gradient(180deg, #7C5CFC, #8B7BF7)",
             }}
           />
           <Typography variant="h5">About</Typography>

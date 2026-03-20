@@ -64,7 +64,7 @@ export default function Skills() {
               width: 4,
               height: 28,
               borderRadius: 1,
-              background: "linear-gradient(180deg, #00e5ff, #7c4dff)",
+              background: "linear-gradient(180deg, #7C5CFC, #8B7BF7)",
             }}
           />
           <Typography variant="h5">Skills</Typography>
@@ -76,7 +76,7 @@ export default function Skills() {
               variant="subtitle2"
               sx={{
                 mb: 1.5,
-                color: "#94a3b8",
+                color: "#9898A6",
                 fontFamily: "'Fira Code', monospace",
                 fontSize: "0.75rem",
                 textTransform: "uppercase",

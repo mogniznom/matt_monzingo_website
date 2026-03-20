@@ -56,7 +56,7 @@ export default function Projects() {
               width: 4,
               height: 28,
               borderRadius: 1,
-              background: "linear-gradient(180deg, #00e5ff, #7c4dff)",
+              background: "linear-gradient(180deg, #7C5CFC, #8B7BF7)",
             }}
           />
           <Typography variant="h5">Projects</Typography>
@@ -71,22 +71,22 @@ export default function Projects() {
                   width: 48,
                   height: 48,
                   borderRadius: 2,
-                  bgcolor: "rgba(0, 229, 255, 0.08)",
-                  border: "1px solid rgba(0, 229, 255, 0.15)",
+                  bgcolor: "rgba(139, 123, 247, 0.08)",
+                  border: "1px solid rgba(139, 123, 247, 0.15)",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
                   flexShrink: 0,
                 }}
               >
-                <BuildIcon sx={{ color: "#00e5ff" }} />
+                <BuildIcon sx={{ color: "#8B7BF7" }} />
               </Box>
               <Box>
                 <Typography variant="subtitle1">{project.title}</Typography>
                 <Typography
                   variant="body2"
                   sx={{
-                    color: "#00e5ff",
+                    color: "#8B7BF7",
                     fontFamily: "'Fira Code', monospace",
                     fontSize: "0.75rem",
                   }}

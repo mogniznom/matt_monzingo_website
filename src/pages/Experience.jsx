@@ -102,7 +102,7 @@ export default function Experience() {
               width: 4,
               height: 28,
               borderRadius: 1,
-              background: "linear-gradient(180deg, #00e5ff, #7c4dff)",
+              background: "linear-gradient(180deg, #7C5CFC, #8B7BF7)",
             }}
           />
           <Typography variant="h5">Experience</Typography>
@@ -117,15 +117,15 @@ export default function Experience() {
                   width: 48,
                   height: 48,
                   borderRadius: 2,
-                  bgcolor: "rgba(0, 229, 255, 0.08)",
-                  border: "1px solid rgba(0, 229, 255, 0.15)",
+                  bgcolor: "rgba(139, 123, 247, 0.08)",
+                  border: "1px solid rgba(139, 123, 247, 0.15)",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
                   flexShrink: 0,
                 }}
               >
-                <WorkIcon sx={{ color: "#00e5ff" }} />
+                <WorkIcon sx={{ color: "#8B7BF7" }} />
               </Box>
               <Box sx={{ flex: 1 }}>
                 <Typography variant="subtitle1">{job.title}</Typography>
@@ -135,7 +135,7 @@ export default function Experience() {
                 <Typography
                   variant="body2"
                   sx={{
-                    color: "#00e5ff",
+                    color: "#8B7BF7",
                     fontFamily: "'Fira Code', monospace",
                     fontSize: "0.75rem",
                     mt: 0.5,
@@ -150,7 +150,7 @@ export default function Experience() {
                       <Typography
                         variant="body2"
                         fontWeight={600}
-                        sx={{ mb: 0.5, color: "#e2e8f0" }}
+                        sx={{ mb: 0.5, color: "#E8E8ED" }}
                       >
                         {section.heading}
                       </Typography>

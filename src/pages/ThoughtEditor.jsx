@@ -74,20 +74,20 @@ export default function ThoughtEditor() {
 
   const inputSx = {
     "& .MuiOutlinedInput-root": {
-      "& fieldset": { borderColor: "rgba(0, 229, 255, 0.2)" },
-      "&:hover fieldset": { borderColor: "rgba(0, 229, 255, 0.4)" },
-      "&.Mui-focused fieldset": { borderColor: "#00e5ff" },
-      color: "#e2e8f0",
+      "& fieldset": { borderColor: "rgba(139, 123, 247, 0.2)" },
+      "&:hover fieldset": { borderColor: "rgba(139, 123, 247, 0.4)" },
+      "&.Mui-focused fieldset": { borderColor: "#8B7BF7" },
+      color: "#E8E8ED",
     },
-    "& .MuiInputLabel-root": { color: "#64748b" },
-    "& .MuiInputLabel-root.Mui-focused": { color: "#00e5ff" },
+    "& .MuiInputLabel-root": { color: "#5A5A6E" },
+    "& .MuiInputLabel-root.Mui-focused": { color: "#8B7BF7" },
   };
 
   if (loading) {
     return (
       <Card elevation={0}>
         <CardContent sx={{ p: 4, display: "flex", justifyContent: "center" }}>
-          <CircularProgress size={32} sx={{ color: "#00e5ff" }} />
+          <CircularProgress size={32} sx={{ color: "#8B7BF7" }} />
         </CardContent>
       </Card>
     );
@@ -98,10 +98,10 @@ export default function ThoughtEditor() {
       <CardContent sx={{ p: 4 }}>
         {/* Header */}
         <Box sx={{ display: "flex", alignItems: "center", gap: 1.5, mb: 3 }}>
-          <IconButton size="small" onClick={() => navigate("/thoughts")} sx={{ color: "#64748b" }}>
+          <IconButton size="small" onClick={() => navigate("/thoughts")} sx={{ color: "#5A5A6E" }}>
             <ArrowBackIcon fontSize="small" />
           </IconButton>
-          <Box sx={{ width: 4, height: 28, borderRadius: 1, background: "linear-gradient(180deg, #00e5ff, #7c4dff)" }} />
+          <Box sx={{ width: 4, height: 28, borderRadius: 1, background: "linear-gradient(180deg, #7C5CFC, #8B7BF7)" }} />
           <Typography variant="h5">{isNew ? "New Thought" : "Edit Thought"}</Typography>
         </Box>
 
@@ -143,18 +143,18 @@ export default function ThoughtEditor() {
                 checked={published}
                 onChange={(e) => setPublished(e.target.checked)}
                 sx={{
-                  "& .MuiSwitch-switchBase.Mui-checked": { color: "#00e5ff" },
-                  "& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track": { bgcolor: "#00e5ff" },
+                  "& .MuiSwitch-switchBase.Mui-checked": { color: "#8B7BF7" },
+                  "& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track": { bgcolor: "#8B7BF7" },
                 }}
               />
             }
-            label={<Typography variant="body2" sx={{ color: "#94a3b8" }}>{published ? "Published" : "Draft"}</Typography>}
+            label={<Typography variant="body2" sx={{ color: "#9898A6" }}>{published ? "Published" : "Draft"}</Typography>}
           />
           <Box sx={{ display: "flex", gap: 1.5 }}>
             <Button
               variant="outlined"
               onClick={() => navigate(isNew ? "/thoughts" : `/thoughts/${id}`)}
-              sx={{ borderColor: "rgba(0,229,255,0.2)", color: "#64748b", "&:hover": { borderColor: "rgba(0,229,255,0.4)" } }}
+              sx={{ borderColor: "rgba(139,123,247,0.2)", color: "#5A5A6E", "&:hover": { borderColor: "rgba(139,123,247,0.4)" } }}
             >
               Cancel
             </Button>
@@ -162,7 +162,7 @@ export default function ThoughtEditor() {
               variant="contained"
               onClick={handleSave}
               disabled={saving || !title.trim()}
-              sx={{ bgcolor: "#00e5ff", color: "#0a0e17", "&:hover": { bgcolor: "#00b8cc" }, "&:disabled": { bgcolor: "rgba(0,229,255,0.2)" } }}
+              sx={{ bgcolor: "#7C5CFC", color: "#FFFFFF", "&:hover": { bgcolor: "#8B7BF7" }, "&:disabled": { bgcolor: "rgba(124,92,252,0.2)" } }}
             >
               {saving ? "Saving…" : "Save"}
             </Button>

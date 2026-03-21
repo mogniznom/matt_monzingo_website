@@ -195,7 +195,9 @@ export default function Projects() {
       </Box>
 
       {/* Featured project — full width */}
-      {featured.length > 0 && (
+      {featured.length > 0 && (() => {
+        const FeaturedIcon = featured[0].Icon;
+        return (
         <Box sx={{ mb: 2 }}>
           <Box
             sx={{
@@ -261,7 +263,7 @@ export default function Projects() {
                   mb: 2,
                 }}
               >
-                <featured[0].Icon sx={{ color: "#FFFFFF", fontSize: 26 }} />
+                <FeaturedIcon sx={{ color: "#FFFFFF", fontSize: 26 }} />
               </Box>
 
               <Typography
@@ -309,7 +311,8 @@ export default function Projects() {
             </Box>
           </Box>
         </Box>
-      )}
+        );
+      })()}
 
       {/* Rest of projects — 2-col grid */}
       <Box

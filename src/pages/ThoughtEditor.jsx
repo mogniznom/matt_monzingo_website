@@ -1,16 +1,14 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import {
-  Card,
-  CardContent,
-  Typography,
   Box,
-  TextField,
   Button,
-  Switch,
+  CircularProgress,
   FormControlLabel,
   IconButton,
-  CircularProgress,
+  Switch,
+  TextField,
+  Typography,
 } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useAuth, isAdmin } from "../contexts/AuthContext";
@@ -30,12 +28,10 @@ export default function ThoughtEditor() {
   const [saving, setSaving] = useState(false);
   const [loading, setLoading] = useState(!isNew);
 
-  // Redirect non-admins
   useEffect(() => {
     if (!admin) navigate("/thoughts");
   }, [admin, navigate]);
 
-  // Load existing post for edit
   useEffect(() => {
     if (!isNew && id) {
       getPost(id)
@@ -59,7 +55,6 @@ export default function ThoughtEditor() {
         .split(",")
         .map((t) => t.trim())
         .filter(Boolean);
-
       if (isNew) {
         const ref = await createPost(title.trim(), content, tagList, published);
         navigate(`/thoughts/${ref.id}`);
@@ -74,101 +69,177 @@ export default function ThoughtEditor() {
 
   const inputSx = {
     "& .MuiOutlinedInput-root": {
-      "& fieldset": { borderColor: "rgba(0, 229, 255, 0.2)" },
-      "&:hover fieldset": { borderColor: "rgba(0, 229, 255, 0.4)" },
-      "&.Mui-focused fieldset": { borderColor: "#00e5ff" },
-      color: "#e2e8f0",
+      background: "rgba(255,255,255,0.03)",
+      backdropFilter: "blur(12px)",
+      "& fieldset": { borderColor: "rgba(255,255,255,0.12)" },
+      "&:hover fieldset": { borderColor: "rgba(157,78,221,0.40)" },
+      "&.Mui-focused fieldset": { borderColor: "#9D4EDD" },
+      color: "#F1F5F9",
     },
-    "& .MuiInputLabel-root": { color: "#64748b" },
-    "& .MuiInputLabel-root.Mui-focused": { color: "#00e5ff" },
+    "& .MuiInputLabel-root": { color: "rgba(241,245,249,0.45)" },
+    "& .MuiInputLabel-root.Mui-focused": { color: "#9D4EDD" },
   };
 
   if (loading) {
     return (
-      <Card elevation={0}>
-        <CardContent sx={{ p: 4, display: "flex", justifyContent: "center" }}>
-          <CircularProgress size={32} sx={{ color: "#00e5ff" }} />
-        </CardContent>
-      </Card>
+      <Box
+        sx={{
+          p: 4,
+          display: "flex",
+          justifyContent: "center",
+          background: "rgba(255,255,255,0.04)",
+          backdropFilter: "blur(24px)",
+          border: "1px solid rgba(255,255,255,0.09)",
+          borderRadius: "20px",
+        }}
+      >
+        <CircularProgress size={32} sx={{ color: "#9D4EDD" }} />
+      </Box>
     );
   }
 
   return (
-    <Card elevation={0}>
-      <CardContent sx={{ p: 4 }}>
-        {/* Header */}
-        <Box sx={{ display: "flex", alignItems: "center", gap: 1.5, mb: 3 }}>
-          <IconButton size="small" onClick={() => navigate("/thoughts")} sx={{ color: "#64748b" }}>
-            <ArrowBackIcon fontSize="small" />
-          </IconButton>
-          <Box sx={{ width: 4, height: 28, borderRadius: 1, background: "linear-gradient(180deg, #00e5ff, #7c4dff)" }} />
-          <Typography variant="h5">{isNew ? "New Thought" : "Edit Thought"}</Typography>
+    <Box>
+      {/* Header */}
+      <Box sx={{ display: "flex", alignItems: "center", gap: 1.5, mb: 4 }}>
+        <IconButton
+          size="small"
+          onClick={() => navigate("/thoughts")}
+          sx={{
+            color: "rgba(241,245,249,0.45)",
+            "&:hover": { color: "#F1F5F9", background: "rgba(255,255,255,0.06)" },
+          }}
+        >
+          <ArrowBackIcon fontSize="small" />
+        </IconButton>
+        <Box>
+          <Typography
+            variant="overline"
+            sx={{ color: "#9D4EDD", letterSpacing: "0.15em", fontSize: "0.7rem" }}
+          >
+            {isNew ? "New" : "Edit"}
+          </Typography>
+          <Typography
+            variant="h5"
+            sx={{
+              color: "#F1F5F9",
+              lineHeight: 1.2,
+            }}
+          >
+            {isNew ? "New Thought" : "Edit Thought"}
+          </Typography>
         </Box>
+      </Box>
 
-        {/* Title */}
-        <TextField
-          label="Title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          fullWidth
-          sx={{ ...inputSx, mb: 2.5 }}
-        />
-
-        {/* Content */}
-        <TextField
-          label="Content (Markdown supported)"
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-          fullWidth
-          multiline
-          minRows={12}
-          sx={{ ...inputSx, mb: 2.5, "& .MuiOutlinedInput-root": { ...inputSx["& .MuiOutlinedInput-root"], fontFamily: "'Fira Code', monospace", fontSize: "0.85rem" } }}
-        />
-
-        {/* Tags */}
-        <TextField
-          label="Tags (comma-separated)"
-          value={tags}
-          onChange={(e) => setTags(e.target.value)}
-          fullWidth
-          placeholder="react, ai, thoughts"
-          sx={{ ...inputSx, mb: 2.5 }}
-        />
-
-        {/* Published toggle + actions */}
-        <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <FormControlLabel
-            control={
-              <Switch
-                checked={published}
-                onChange={(e) => setPublished(e.target.checked)}
-                sx={{
-                  "& .MuiSwitch-switchBase.Mui-checked": { color: "#00e5ff" },
-                  "& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track": { bgcolor: "#00e5ff" },
-                }}
-              />
-            }
-            label={<Typography variant="body2" sx={{ color: "#94a3b8" }}>{published ? "Published" : "Draft"}</Typography>}
+      <Box
+        sx={{
+          background: "rgba(255,255,255,0.04)",
+          backdropFilter: "blur(24px)",
+          WebkitBackdropFilter: "blur(24px)",
+          border: "1px solid rgba(255,255,255,0.09)",
+          borderRadius: "20px",
+          overflow: "hidden",
+          boxShadow: "0 4px 30px rgba(0,0,0,0.20)",
+        }}
+      >
+        <Box sx={{ height: 3, background: "linear-gradient(90deg, #9D4EDD, #00D4FF, transparent)" }} />
+        <Box sx={{ p: { xs: 3, md: 4 } }}>
+          <TextField
+            label="Title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            fullWidth
+            sx={{ ...inputSx, mb: 2.5 }}
           />
-          <Box sx={{ display: "flex", gap: 1.5 }}>
-            <Button
-              variant="outlined"
-              onClick={() => navigate(isNew ? "/thoughts" : `/thoughts/${id}`)}
-              sx={{ borderColor: "rgba(0,229,255,0.2)", color: "#64748b", "&:hover": { borderColor: "rgba(0,229,255,0.4)" } }}
-            >
-              Cancel
-            </Button>
-            <Button
-              variant="contained"
-              onClick={handleSave}
-              disabled={saving || !title.trim()}
-              sx={{ bgcolor: "#00e5ff", color: "#0a0e17", "&:hover": { bgcolor: "#00b8cc" }, "&:disabled": { bgcolor: "rgba(0,229,255,0.2)" } }}
-            >
-              {saving ? "Saving…" : "Save"}
-            </Button>
+
+          <TextField
+            label="Content (Markdown supported)"
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+            fullWidth
+            multiline
+            minRows={14}
+            sx={{
+              ...inputSx,
+              mb: 2.5,
+              "& .MuiOutlinedInput-root": {
+                ...inputSx["& .MuiOutlinedInput-root"],
+                fontFamily: "monospace",
+                fontSize: "0.875rem",
+              },
+            }}
+          />
+
+          <TextField
+            label="Tags (comma-separated)"
+            value={tags}
+            onChange={(e) => setTags(e.target.value)}
+            fullWidth
+            placeholder="react, ai, thoughts"
+            sx={{ ...inputSx, mb: 3 }}
+          />
+
+          <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 2 }}>
+            <FormControlLabel
+              control={
+                <Switch
+                  checked={published}
+                  onChange={(e) => setPublished(e.target.checked)}
+                  sx={{
+                    "& .MuiSwitch-switchBase.Mui-checked": { color: "#9D4EDD" },
+                    "& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track": {
+                      bgcolor: "#9D4EDD",
+                    },
+                  }}
+                />
+              }
+              label={
+                <Typography
+                  variant="body2"
+                  sx={{ color: "rgba(241,245,249,0.55)", fontSize: "0.85rem" }}
+                >
+                  {published ? "Published" : "Draft"}
+                </Typography>
+              }
+            />
+            <Box sx={{ display: "flex", gap: 1.5 }}>
+              <Button
+                variant="outlined"
+                onClick={() => navigate(isNew ? "/thoughts" : `/thoughts/${id}`)}
+                sx={{
+                  borderColor: "rgba(255,255,255,0.14)",
+                  color: "rgba(241,245,249,0.55)",
+                  "&:hover": {
+                    borderColor: "rgba(255,255,255,0.28)",
+                    color: "#F1F5F9",
+                  },
+                }}
+              >
+                Cancel
+              </Button>
+              <Button
+                variant="contained"
+                onClick={handleSave}
+                disabled={saving || !title.trim()}
+                sx={{
+                  background: "linear-gradient(135deg, #9D4EDD, #7B2FBE)",
+                  boxShadow: "0 4px 20px rgba(157,78,221,0.35)",
+                  "&:hover": {
+                    background: "linear-gradient(135deg, #C77DFF, #9D4EDD)",
+                    boxShadow: "0 6px 28px rgba(157,78,221,0.50)",
+                  },
+                  "&.Mui-disabled": {
+                    background: "rgba(157,78,221,0.20)",
+                    color: "rgba(241,245,249,0.30)",
+                  },
+                }}
+              >
+                {saving ? "Saving…" : "Save"}
+              </Button>
+            </Box>
           </Box>
         </Box>
-      </CardContent>
-    </Card>
+      </Box>
+    </Box>
   );
 }
